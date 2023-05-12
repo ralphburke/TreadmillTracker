@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="scss/main.scss" rel="stylesheet">
+</head>
+<body>
+    <header>Treadmill</header>
+    <button id="legEntryPopupOpen">
+        Add new leg
+    </button>
+<section id="legEntryPopup">
+    <form id="legForm">
+        <div class="legDiv">
+            <label for="legType">Leg Type</label>
+            <select type="text" name="legType" id="legType" required>
+                <option value="Run">Run</option>
+                <option value="Walk">Walk</option>
+                <option value="Rest">Pause/Rest</option>
+            </select>
+        </div>
+        <div class="legDiv">
+            <label for="legSpeed">Speed</label>
+            <input type="number" name="legSpeed" id="legSpeed" required>
+        </div>
+        <div class="legDiv">
+            <label for="legTimeM">Time</label>
+            <input type="number" name="legTimeM" id="legTimeM" required> :
+            <input type="number" name="legTimeS" id="legTimeS" required>
+        </div>
+        <div class="legDiv">
+            <label for="legIncline">Incline</label>
+            <input type="number" name="legIncline" id="legIncline" step="0.1">
+        </div>
+        <div class="legDiv">
+            <label for="legHeart">Heartrate</label>
+            <input type="number" name="legHeart" id="legHeart">
+        </div>
+        <div class="legDiv">
+            <input type="submit" value="add leg">
+        </div>
+    </form>
+    <button id="legEntryPopupClose">
+        X
+    </button>
+    <script src="script.js"></script>
+</section>
+</body>
+</html> 

@@ -5,19 +5,29 @@ body{
 #legEntryPopup{
     background-color:white;
     position:fixed;
-    display:grid;
     top:20%;
     bottom:20%;
     left:10%;
     right:10%;
+    display:grid;
+    grid-template-columns: 1fr 1fr; 
 
     form{
         padding:5em;
         line-height:180%;
     
-    input{
-        padding:5px;
-    }    
+        #legTimeM, #legTimeS{
+            width:4em;
+        }
+        
+        input{
+            padding:5px;
+            width:10em;
+        }    
+        select{
+            padding:5px;
+            width:10em;
+        }
     }
 }
 

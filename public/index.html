@@ -13,10 +13,21 @@
         Add new leg
     </button>
 <section id="legEntryPopup">
+    <form id="SessionForm">
+        <div class="SessionDiv">
+            <label for="Category">Category</label>
+            <select type="text" name="Category" id="sessionCategory">
+                <option value="Sprints">Sprints</option>
+                <option value="Jog">Jog</option>
+                <option value="Endurance">Endurance</option>
+                <option value="Walk">Walk</option>
+            </select>
+        </div>
+    </form>
     <form id="legForm">
         <div class="legDiv">
             <label for="legType">Leg Type</label>
-            <select type="text" name="legType" id="legType" required>
+            <select type="text" name="legType" id="legType">
                 <option value="Run">Run</option>
                 <option value="Walk">Walk</option>
                 <option value="Rest">Pause/Rest</option>
@@ -24,20 +35,20 @@
         </div>
         <div class="legDiv">
             <label for="legSpeed">Speed</label>
-            <input type="number" name="legSpeed" id="legSpeed" required>
+            <input type="number" name="legSpeed" id="legSpeed" required min="0" max="99">
         </div>
         <div class="legDiv">
             <label for="legTimeM">Time</label>
-            <input type="number" name="legTimeM" id="legTimeM" required> :
-            <input type="number" name="legTimeS" id="legTimeS" required>
+            <input type="number" name="legTimeM" id="legTimeM" required min="0"> :
+            <input type="number" name="legTimeS" id="legTimeS" required min="0" max="59.999">
         </div>
         <div class="legDiv">
             <label for="legIncline">Incline</label>
-            <input type="number" name="legIncline" id="legIncline" step="0.1">
+            <input type="number" name="legIncline" id="legIncline" step="0.1" min="-90" max="90">
         </div>
         <div class="legDiv">
             <label for="legHeart">Heartrate</label>
-            <input type="number" name="legHeart" id="legHeart">
+            <input type="number" name="legHeart" id="legHeart" max="999">
         </div>
         <div class="legDiv">
             <input type="submit" value="add leg">

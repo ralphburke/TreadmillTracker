@@ -14,15 +14,28 @@
     </button>
 <section id="legEntryPopup">
     <form id="SessionForm">
-        <div class="SessionDiv">
-            <label for="Category">Category</label>
-            <select type="text" name="Category" id="sessionCategory">
+        <div class="legDiv">
+            <label for="category">Category</label>
+            <select type="text" name="category" id="sessionCategory">
                 <option value="Sprints">Sprints</option>
                 <option value="Jog">Jog</option>
                 <option value="Endurance">Endurance</option>
                 <option value="Walk">Walk</option>
             </select>
         </div>
+        <div class="legDiv">
+            <label for="template">Template</label>
+            <select type="text" name="template" id="sessionTemplate">
+                <option value="None">None</option>
+            </select>
+        </div>
+        <fieldset class="templateRadio">
+            <legend>Save this session as a new template?</legend>
+            <input type="radio" name="templateSave" id="templateYes" value=1>
+            <label for="templateYes">Yes</label>
+            <input type="radio" name="templateSave" id="templateNo" value=0 checked>
+            <label for="templateNo">No</label>
+        </fieldset>
     </form>
     <form id="legForm">
         <div class="legDiv">
@@ -39,8 +52,10 @@
         </div>
         <div class="legDiv">
             <label for="legTimeM">Time</label>
-            <input type="number" name="legTimeM" id="legTimeM" required min="0"> :
-            <input type="number" name="legTimeS" id="legTimeS" required min="0" max="59.999">
+            <div id="timeInput">
+                <input type="number" name="legTimeM" id="legTimeM" required min="0"> :
+                <input type="number" name="legTimeS" id="legTimeS" required min="0" max="59.999">
+            </div>
         </div>
         <div class="legDiv">
             <label for="legIncline">Incline</label>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,72 +8,60 @@
     <title>Document</title>
     <link href="scss/main.scss" rel="stylesheet">
 </head>
+
 <body>
     <header>Treadmill</header>
     <button id="legEntryPopupOpen">
         Add new leg
     </button>
-<section id="legEntryPopup">
-    <form id="SessionForm">
-        <div class="legDiv">
-            <label for="category">Category</label>
-            <select type="text" name="category" id="sessionCategory">
-                <option value="Sprints">Sprints</option>
-                <option value="Jog">Jog</option>
-                <option value="Endurance">Endurance</option>
-                <option value="Walk">Walk</option>
-            </select>
-        </div>
-        <div class="legDiv">
-            <label for="template">Template</label>
-            <select type="text" name="template" id="sessionTemplate">
-                <option value="None">None</option>
-            </select>
-        </div>
-        <fieldset class="templateRadio">
-            <legend>Save this session as a new template?</legend>
-            <input type="radio" name="templateSave" id="templateYes" value=1>
-            <label for="templateYes">Yes</label>
-            <input type="radio" name="templateSave" id="templateNo" value=0 checked>
-            <label for="templateNo">No</label>
-        </fieldset>
-    </form>
-    <form id="legForm">
-        <div class="legDiv">
-            <label for="legType">Leg Type</label>
-            <select type="text" name="legType" id="legType">
-                <option value="Run">Run</option>
-                <option value="Walk">Walk</option>
-                <option value="Rest">Pause/Rest</option>
-            </select>
-        </div>
-        <div class="legDiv">
-            <label for="legSpeed">Speed</label>
-            <input type="number" name="legSpeed" id="legSpeed" required min="0" max="99">
-        </div>
-        <div class="legDiv">
-            <label for="legTimeM">Time</label>
-            <div id="timeInput">
-                <input type="number" name="legTimeM" id="legTimeM" required min="0"> :
-                <input type="number" name="legTimeS" id="legTimeS" required min="0" max="59.999">
+    <section id="legEntryPopup">
+        <form id="SessionForm">
+            <div class="sessionDiv">
+                <label for="category">Category</label>
+                <select type="text" name="category" id="sessionCategory">
+                    <option value="Sprints">Sprints</option>
+                    <option value="Jog">Jog</option>
+                    <option value="Endurance">Endurance</option>
+                    <option value="Walk">Walk</option>
+                </select>
             </div>
-        </div>
-        <div class="legDiv">
-            <label for="legIncline">Incline</label>
-            <input type="number" name="legIncline" id="legIncline" step="0.1" min="-90" max="90">
-        </div>
-        <div class="legDiv">
-            <label for="legHeart">Heartrate</label>
-            <input type="number" name="legHeart" id="legHeart" max="999">
-        </div>
-        <div class="legDiv">
-            <input type="submit" value="add leg">
-        </div>
-    </form>
-    <button id="legEntryPopupClose">
-        X
-    </button>
-    <script src="script.js"></script>
-</section>
+            <div class="sessionDiv">
+                <label for="template">Template</label>
+                <select type="text" name="template" id="sessionTemplate">
+                    <option value="None">None</option>
+                </select>
+            </div>
+            <fieldset class="templateRadio">
+                <legend>Save this session as a new template?</legend>
+                <input type="radio" name="templateSave" id="templateYes" value=1>
+                <label for="templateYes">Yes</label>
+                <input type="radio" name="templateSave" id="templateNo" value=0 checked>
+                <label for="templateNo">No</label>
+            </fieldset>
+        </form>
+        <form id="legForm">
+            <div class="legEntryRow">
+                <select class="genericInput" type="text" name="legType" id="legType">
+                    <option value="Run">Run</option>
+                    <option value="Walk">Walk</option>
+                    <option value="Rest">Pause/Rest</option>
+                </select>
+                <div id="timeInput">
+                    <input type="number" name="legTimeM" id="legTimeM" required min="0"> :
+                    <input type="number" name="legTimeS" id="legTimeS" required min="0" max="59.999">
+                </div>
+                <input type="number" name="legSpeed" id="legSpeed" required min="0" max="99">
+                <span class="units">km/h</span>
+                <input class="genericInput" type="number" name="legIncline" id="legIncline" step="0.1" min="-90" max="90">
+                <input class="genericInput" type="number" name="legHeart" id="legHeart" max="999">
+            </div>
+            <input type="button" value="add leg" id="addLegButton">
+        </form>
+        <button id="legEntryPopupClose">
+            X
+        </button>
+        <script src="script.js"></script>
+    </section>
 </body>
-</html> 
+
+</html>

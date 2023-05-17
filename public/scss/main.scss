@@ -20,31 +20,31 @@ body{
             appearance:none;
         }
 
-        .genericInput{
+        .legIncline, .legHeart, .legType{
             width:50%;
             margin:0;
             padding:0.5em;
         }
     
-        #legTimeM, #legTimeS{
+        .legTimeM, .legTimeS{
             width:50%;
             padding:0.5em;
         }
 
-        #timeInput{
+        .timeInput{
             display:flex;
             width:50%;
         }
         
-        #legSpeed{
+        .legSpeed{
             width:30%;
         }
 
-        #legSpeed, #legTimeM{
+        .legSpeed, .legTimeM{
             text-align: right;
         }
 
-        #legIncline, #legHeart{
+        .legIncline, .legHeart{
             text-align: center;
         }
 
@@ -62,15 +62,6 @@ body{
     right:10px;
 }
 
-// .sessionDiv{
-//     display: flex;
-//     justify-content: space-between;
-// }
-
-// label{
-//     flex-basis:30%;
-// }
-
 .legEntryRow{
     display:flex;
 }
@@ -86,4 +77,14 @@ body{
 #tirednessLabel{
     display:flex;
     justify-content: space-between;
+    margin-top:-20px;
+}
+
+#tirednessRating{
+    display:flex;
+    justify-content:space-evenly;
+}
+
+#calorieInput{
+    display:flex;
 }

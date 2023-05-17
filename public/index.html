@@ -39,15 +39,25 @@
                 <label for="templateNo">No</label>
             </fieldset>
             <div id="tirednessRating">
-                <input type="radio" name="tiredness" id="tiredness1" value="1">
-                <input type="radio" name="tiredness" id="tiredness2" value="2">
-                <input type="radio" name="tiredness" id="tiredness3" value="3">
-                <input type="radio" name="tiredness" id="tiredness4" value="4">
-                <input type="radio" name="tiredness" id="tiredness5" value="5">
-                <div id="tirednessLabel">
-                    <label for="tiredness1" id="feelFine">Feel fine</label>
-                    <label for="tiredness5" id="exhausted">Exhausted</label>
+                <div class="tirednessDiv">
+                    <input type="radio" name="tiredness" id="tiredness1" value="1">
                 </div>
+                <div class="tirednessDiv">
+                    <input type="radio" name="tiredness" id="tiredness2" value="2">
+                </div>
+                <div class="tirednessDiv">
+                    <input type="radio" name="tiredness" id="tiredness3" value="3">
+                </div>
+                <div class="tirednessDiv">
+                    <input type="radio" name="tiredness" id="tiredness4" value="4">
+                </div>
+                <div class="tirednessDiv">
+                    <input type="radio" name="tiredness" id="tiredness5" value="5">
+                </div>
+            </div>
+            <div id="tirednessLabel">
+                <label for="tiredness1" id="feelFine">Feel fine</label>
+                <label for="tiredness5" id="exhausted">Exhausted</label>
             </div>
             <div id="calorieInput">
                 <label for="calories">Calories burned</label>
@@ -56,20 +66,20 @@
             </div>
         </form>
         <form id="legForm">
-            <div class="legEntryRow">
-                <select class="genericInput" type="text" name="legType" id="legType">
+            <div class="legEntryRow" id="legRow1">
+                <select class="typeInput" type="text" name="legType" id="legType">
                     <option value="Run">Run</option>
                     <option value="Walk">Walk</option>
                     <option value="Rest">Pause/Rest</option>
                 </select>
-                <div id="timeInput">
-                    <input type="number" name="legTimeM" id="legTimeM" required min="0"> :
-                    <input type="number" name="legTimeS" id="legTimeS" required min="0">
+                <div class="timeInput">
+                    <input type="number" name="legTimeM" class="legTimeM" required min="0"> :
+                    <input type="number" name="legTimeS" class="legTimeS" required min="0">
                 </div>
-                <input type="number" name="legSpeed" id="legSpeed" required min="0" max="99">
+                <input type="number" name="legSpeed" class="legSpeed" required min="0" max="99">
                 <span class="units">km/h</span>
-                <input class="genericInput" type="number" name="legIncline" id="legIncline" step="0.1" min="-90" max="90">
-                <input class="genericInput" type="number" name="legHeart" id="legHeart" max="999">
+                <input type="number" name="legIncline" class="legIncline" step="0.1" min="-90" max="90">
+                <input type="number" name="legHeart" class="legHeart" max="999">
             </div>
             <input type="button" value="add leg" id="addLegButton">
         </form>

@@ -37,37 +37,31 @@ document.getElementById("addLegButton").addEventListener("click", function(){
 })
 
 function addLegRow(){
-    saveLegRows();
-    legRowCopy.id="legRow"+(parseInt(legRowCopy.id.slice(-1))+1);
-    console.log(legRowCopy);
+    blankRow=document.getElementById("blankLegRow");
+    legRowCopy=blankRow.cloneNode(true);
+    rowNum=document.getElementsByClassName("legEntryRow").length;
+    legRowCopy.id="legRow"+rowNum;
+    if(legRowCopy.id==="legRow1"){legRowCopy.children[6].style.visibility="hidden"};
     document.getElementById("legForm").insertBefore(legRowCopy, document.getElementById("addLegButton"));
+    document.getElementsByClassName("typeInput")[rowNum].addEventListener("change", event=>{
+        legGrey(event.target);
+    })
 }
 
-function saveLegRows(){
-    legRows=document.getElementsByClassName("legEntryRow");
-    legRowCopy=legRows[legRows.length-1].cloneNode(true);
-}
-
-// function legGrey(element){
-//     if(type.value=="Rest"){
-//         if(speed.value!=="0"){speedStore=speed.value}
-//         speed.value="0";
-//         if(incline.value!=="0"){inclineStore=incline.value}
-//         incline.value="0";
-//         speed.setAttribute('disabled', "true");
-//         incline.setAttribute('disabled', "true");
-//     }else{
-//         speed.removeAttribute('disabled');
-//         incline.removeAttribute('disabled');
-//         if(speed.value=="0"){speed.value=speedStore}
-//         if(incline.value=="0"){incline.value=inclineStore}};
-//     };
-    
-//         document.getElementById("legType").addEventListener("change", event=>{
-//             saveLegRows();
-//             legRowsArray=Array.from(legRows);
-//             console.log(legRowsArray);
-//             legRowsArray.forEach(element => {
-//             legGrey(element);
-//         })
-//     })
+function legGrey(selectElement){
+    let legRow=selectElement.parentNode;
+    let speed=legRow.children[2];
+    let incline=legRow.children[4];
+    if(selectElement.value=="Rest"){
+        if(speed.value!=="0"){speedStore=speed.value}
+        speed.value="0";
+        if(incline.value!=="0"){inclineStore=incline.value}
+        incline.value="0";
+        speed.setAttribute('disabled', "true");
+        incline.setAttribute('disabled', "true");
+    }else{
+        speed.removeAttribute('disabled');
+        incline.removeAttribute('disabled');
+        if(speed.value=="0"){speed.value=speedStore}
+        if(incline.value=="0"){incline.value=inclineStore}};
+    };

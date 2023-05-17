@@ -10,6 +10,22 @@
 </head>
 
 <body>
+    <div class="legEntryRow" id="blankLegRow">
+        <select class="typeInput" type="text" name="legType" id="legType">
+            <option value="Run">Run</option>
+            <option value="Walk">Walk</option>
+            <option value="Rest">Pause/Rest</option>
+        </select>
+        <div class="timeInput">
+            <input type="number" name="legTimeM" class="legTimeM" required min="0"> :
+            <input type="number" name="legTimeS" class="legTimeS" required min="0">
+        </div>
+        <input type="number" name="legSpeed" class="legSpeed" required min="0" max="99">
+        <span class="units">km/h</span>
+        <input type="number" name="legIncline" class="legIncline" step="0.1" min="-90" max="90">
+        <input type="number" name="legHeart" class="legHeart" max="999">
+        <input type="button" name="legRowDelete" class="legRowDelete" value="X">
+    </div>
     <header>Treadmill</header>
     <button id="legEntryPopupOpen">
         Add new leg
@@ -66,21 +82,6 @@
             </div>
         </form>
         <form id="legForm">
-            <div class="legEntryRow" id="legRow1">
-                <select class="typeInput" type="text" name="legType" id="legType">
-                    <option value="Run">Run</option>
-                    <option value="Walk">Walk</option>
-                    <option value="Rest">Pause/Rest</option>
-                </select>
-                <div class="timeInput">
-                    <input type="number" name="legTimeM" class="legTimeM" required min="0"> :
-                    <input type="number" name="legTimeS" class="legTimeS" required min="0">
-                </div>
-                <input type="number" name="legSpeed" class="legSpeed" required min="0" max="99">
-                <span class="units">km/h</span>
-                <input type="number" name="legIncline" class="legIncline" step="0.1" min="-90" max="90">
-                <input type="number" name="legHeart" class="legHeart" max="999">
-            </div>
             <input type="button" value="add leg" id="addLegButton">
         </form>
         <button id="legEntryPopupClose">

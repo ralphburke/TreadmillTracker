@@ -70,25 +70,24 @@
                 <select class="typeInput genericInput" type="text" name="legType" id="legType">
                     <option value="Run">Run</option>
                     <option value="Walk">Walk</option>
-                    <option value="Rest">Pause/Rest</option>
+                    <option value="Rest">Rest</option>
                 </select>
                 <div class="timeInput">
-                    <input type="number" name="legTimeM" class="legTimeM genericInput" required min="0" placeholder="00"> :
-                    <input type="number" name="legTimeS" class="legTimeS genericInput" required min="0" placeholder="00">
+                    <input type="number" name="legTimeM" class="legTimeM genericInput" required min="0" placeholder="mm"> :
+                    <input type="number" name="legTimeS" class="legTimeS genericInput" required min="0" placeholder="ss">
                 </div>
                 <input type="number" name="legSpeed" class="legSpeed genericInput" required min="0" max="99" placeholder="0">
                 <span class="units">km/h</span>
-                <input type="number" name="legIncline" class="legIncline genericInput" step="0.1" min="-90" max="90" placeholder="0">
+                <input type="number" name="legIncline" class="legIncline genericInput" step="0.1" min="-90" max="90" placeholder="--">
                 <span class="units">°</span>
-                <input type="number" name="legHeart" class="legHeart genericInput" max="999" placeholder="00">
+                <input type="number" name="legHeart" class="legHeart genericInput" max="999" placeholder="--">
                 <span class="units">bpm</span>
                 <input type="button" name="legRowDelete" class="legRowDelete" value="X">
             </div>
             <input type="button" value="+" id="addLegButton">
         </form>
-        <button id="legEntryPopupClose">
-            X
-        </button>
+        <button id="legEntryPopupClose">X</button>
+        <button id="addSession">Add Session</button>
         <script src="script.js"></script>
     </section>
 </body>

@@ -37,22 +37,26 @@ document.getElementById("addLegButton").addEventListener("click", function(){
 })
 
 function addLegRow(){
-    blankRow=document.getElementById("blankLegRow");
+    blankRow=document.getElementById("legRow0");
     legRowCopy=blankRow.cloneNode(true);
     rowNum=document.getElementsByClassName("legEntryRow").length;
-    legRowCopy.id="legRow"+rowNum;
-    if(legRowCopy.id==="legRow1"){legRowCopy.children[6].style.visibility="hidden"};
+    legRowCopy.id="legRow"+(parseInt(document.getElementsByClassName("legEntryRow")[rowNum-1].id.slice(6))+1);
+    console.log(document.getElementById("legForm"))
+    if(legRowCopy.id==="legRow1"){legRowCopy.children[8].style.visibility="hidden"};
     document.getElementById("legForm").insertBefore(legRowCopy, document.getElementById("addLegButton"));
     document.getElementsByClassName("typeInput")[rowNum].addEventListener("change", event=>{
         legGrey(event.target);
     })
+    document.getElementsByClassName("legRowDelete")[rowNum].addEventListener("click", event=>{
+        deleteLegRow(event.target);
+    })
 }
 
-function legGrey(selectElement){
-    let legRow=selectElement.parentNode;
+function legGrey(typeSelect){
+    let legRow=typeSelect.parentNode;
     let speed=legRow.children[2];
     let incline=legRow.children[4];
-    if(selectElement.value=="Rest"){
+    if(typeSelect.value=="Rest"){
         if(speed.value!=="0"){speedStore=speed.value}
         speed.value="0";
         if(incline.value!=="0"){inclineStore=incline.value}
@@ -65,3 +69,7 @@ function legGrey(selectElement){
         if(speed.value=="0"){speed.value=speedStore}
         if(incline.value=="0"){incline.value=inclineStore}};
     };
+
+    function deleteLegRow(deleteButton){
+        deleteButton.parentNode.remove();
+    }

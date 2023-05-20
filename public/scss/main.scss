@@ -13,9 +13,10 @@ body{
     right:3%;
     display:grid;
     grid-template-columns: 2fr 3fr;
+    visibility: hidden;
 
     form{
-        padding:3em;
+        // padding:3em;
         line-height:240%;
 
         ::-webkit-inner-spin-button {
@@ -40,7 +41,7 @@ body{
         }
 
         .genericInput:disabled{
-            background-color:rgb(223, 223, 223);
+            background-color:rgb(240, 240, 240);
         }
 
         .typeInput{
@@ -121,9 +122,9 @@ body{
     flex-direction:column;
     overflow-y:scroll;
     align-items:center;
-    height:40%;
+    height:350px;
     gap:10px;
-    margin-top:50px;
+    padding:0 10px;
 }
 
 .units{
@@ -131,9 +132,59 @@ body{
 }
 
 #addSession{
-    position:absolute;
-    bottom:100px;
-    right:20%;
     font-size:20px;
     padding:20px 50px;
+    align-self:center;
+    margin-top:20px;
+}
+
+#legsContainer{
+    display:flex;
+    flex-direction:column;
+}
+
+h2{
+    padding-left:15px;
+    margin-top:50px;
+    font-size:30px;
+    margin-bottom:5px;
+}
+
+#sessionForm{
+    padding:3em;
+}
+
+.sessionDiv{
+    display:flex;
+    margin:20px 0;
+}
+
+#nameInput{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.graph{
+    margin:20px;
+    display:flex;
+    align-items:flex-end;
+}
+
+.bar{
+    border:2px solid white;
+}
+
+#sessionsMainPage{
+    background-color:rgb(125, 230, 111);
+    width:25%;
+    height:20%;
+    position:absolute;
+    bottom:30px;
+    left:30px;
+
+}
+
+.pastSession{
+    background-color: aliceblue;
+    margin:20px;
 }

@@ -15,7 +15,8 @@
         Add new leg
     </button>
     <section id="legEntryPopup">
-        <form id="SessionForm">
+        <form id="sessionForm">
+            <input id="nameInput" placeholder="Session Name" class="genericInput">
             <div class="sessionDiv">
                 <label for="category">Category</label>
                 <select type="text" name="category" id="sessionCategory" class="genericInput">
@@ -65,31 +66,53 @@
                 <span class="units">kcal</span>
             </div>
         </form>
-        <form id="legForm">
-            <div class="legEntryRow" id="legRow0">
-                <select class="typeInput genericInput" type="text" name="legType" id="legType">
-                    <option value="Run">Run</option>
-                    <option value="Walk">Walk</option>
-                    <option value="Rest">Rest</option>
-                </select>
-                <div class="timeInput">
-                    <input type="number" name="legTimeM" class="legTimeM genericInput" required min="0" placeholder="mm"> :
-                    <input type="number" name="legTimeS" class="legTimeS genericInput" required min="0" placeholder="ss">
+        <div id="legsContainer">
+            <h2>Legs</h2>
+            <form id="legForm">
+                <div class="legEntryRow" id="legRow0">
+                    <select class="typeInput genericInput" type="text" name="legType" id="legType">
+                        <option value="Sprint">Sprint</option>
+                        <option value="Jog">Jog</option>
+                        <option value="Walk">Walk</option>
+                        <option value="Rest">Rest</option>
+                    </select>
+                    <div class="timeInput">
+                        <input type="number" name="legTimeM" class="legTimeM genericInput" required min="0" placeholder="mm"> :
+                        <input type="number" name="legTimeS" class="legTimeS genericInput" required min="0" placeholder="ss">
+                    </div>
+                    <input type="number" name="legSpeed" class="legSpeed genericInput" required min="0" max="99" placeholder="0">
+                    <span class="units">km/h</span>
+                    <input type="number" name="legIncline" class="legIncline genericInput" step="0.1" min="-90" max="90" placeholder="--">
+                    <span class="units">°</span>
+                    <input type="number" name="legHeart" class="legHeart genericInput" max="999" placeholder="--">
+                    <span class="units">bpm</span>
+                    <input type="button" name="legRowDelete" class="legRowDelete" value="X">
                 </div>
-                <input type="number" name="legSpeed" class="legSpeed genericInput" required min="0" max="99" placeholder="0">
-                <span class="units">km/h</span>
-                <input type="number" name="legIncline" class="legIncline genericInput" step="0.1" min="-90" max="90" placeholder="--">
-                <span class="units">°</span>
-                <input type="number" name="legHeart" class="legHeart genericInput" max="999" placeholder="--">
-                <span class="units">bpm</span>
-                <input type="button" name="legRowDelete" class="legRowDelete" value="X">
-            </div>
-            <input type="button" value="+" id="addLegButton">
-        </form>
+                <input type="button" value="+" id="addLegButton">
+            </form>
+            <button id="addSession">Add Session</button>
+        </div>
         <button id="legEntryPopupClose">X</button>
-        <button id="addSession">Add Session</button>
-        <script src="script.js"></script>
     </section>
+
+<div class="graph" id="graph1">
+    <!-- <div class="barEx" id="bar1"></div>
+    <div class="barEx" id="bar2"></div>
+    <div class="barEx" id="bar3"></div> -->
+</div>
+
+<button id="make">Construct Graph</button>
+<button id="writeSessions">Write Sessions</button>
+<div id="sessionWrite">sessions</div>
+
+<section id="sessionsMainPage">
+    <div class="pastSession">
+        <h3>Session Name</h3>
+        <div class="graph"></div>
+    </div>
+</section>
+
+<script src="script.js"></script>
 </body>
 
 </html>

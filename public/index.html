@@ -13,9 +13,11 @@
     <header>
         <h1>TREADMILL TRACKER</h1>
     </header>
-    <button id="legEntryPopupOpen">
-        Add new leg
-    </button>
+    <div id="centreButton">
+        <button id="sessionEntryPopupOpen">
+            + New Session
+        </button>
+    </div>
     <section id="sessionsMainPage">
         <div class="pastSession" id="pastSession0">
             <h3 class="sessionName"></h3>
@@ -30,8 +32,8 @@
             </div>
         </div>
     </section>
-    <section id="legEntryPopup">
-        <form id="sessionForm">
+    <form id="sessionEntryPopup">
+        <div id="sessionForm">
             <input id="nameInput" placeholder="Session Name" class="genericInput" required>
             <div class="sessionDiv">
                 <label for="category">Category</label>
@@ -81,40 +83,38 @@
                 <input type="number" name="calories" class="genericInput" id="calories" min="0">
                 <span class="units">kcal</span>
             </div>
-        </form>
+        </div>
         <div id="legsContainer">
             <h2>Legs</h2>
-            <form id="legForm">
-                <div class="legEntryRow" id="legRow0">
-                    <select class="typeInput genericInput" type="text" name="legType" id="legType">
-                        <option value="Sprint">Sprint</option>
-                        <option value="Jog">Jog</option>
-                        <option value="Walk">Walk</option>
-                        <option value="Rest">Rest</option>
-                    </select>
-                    <div class="timeInput">
-                        <input type="number" name="legTimeM" class="legTimeM genericInput" required min="0" placeholder="mm"> :
-                        <input type="number" name="legTimeS" class="legTimeS genericInput" required min="0" placeholder="ss">
-                    </div>
-                    <input type="number" name="legSpeed" class="legSpeed genericInput" required min="0" max="99" placeholder="0">
-                    <span class="units">km/h</span>
-                    <input type="number" name="legIncline" class="legIncline genericInput" step="0.1" min="-90" max="90" placeholder="--">
-                    <span class="units">°</span>
-                    <input type="number" name="legHeart" class="legHeart genericInput" max="999" placeholder="--">
-                    <span class="units">bpm</span>
-                    <input type="button" name="legRowDelete" class="legRowDelete" value="X">
-                </div>
+            <div id="legForm">
                 <input type="button" value="+" id="addLegButton">
-            </form>
-            <button id="addSession">Add Session</button>
+            </div>
+            <button type="submit" id="addSession">Add Session</button>
         </div>
-        <button id="legEntryPopupClose">X</button>
-    </section>
-
-<button id="make">Construct Graph</button>
-<button id="writeSessions">Write Sessions</button>
-<div id="sessionWrite">sessions</div>
-
+        <button id="sessionEntryPopupClose">X</button>
+    </form>
+    <div class="legEntryRow" id="legRow0">
+        <select class="typeInput genericInput" type="text" name="legType" id="legType">
+            <option value="Sprint">Sprint</option>
+            <option value="Jog">Jog</option>
+            <option value="Walk">Walk</option>
+            <option value="Rest">Rest</option>
+        </select>
+        <div class="timeInput">
+            <input type="number" name="legTimeM" class="legTimeM genericInput" min="0" placeholder="mm"> :
+            <input type="number" name="legTimeS" class="legTimeS genericInput" min="0" placeholder="ss">
+        </div>
+        <input type="number" name="legSpeed" class="legSpeed genericInput" required min="0" placeholder="0">
+        <span class="units">km/h</span>
+        <input type="number" name="legIncline" class="legIncline genericInput" step="0.1" min="-90" max="90" placeholder="--">
+        <span class="units">°</span>
+        <input type="number" name="legHeart" class="legHeart genericInput" placeholder="--">
+        <span class="units">bpm</span>
+        <input type="button" name="legRowDelete" class="legRowDelete" value="X">
+    </div>
+    <button id="writeSessions">
+        Write Sessions
+    </button>
 <script src="script.js"></script>
 </body>
 

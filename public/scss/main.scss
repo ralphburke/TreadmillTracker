@@ -12,11 +12,35 @@ header{
     top:80px;
 }
 
+#centreButton{
+    position:fixed;
+    display:flex;
+    justify-content:center;
+    width:100%;
+    top:260px;
+}
+
+#sessionEntryPopupOpen{
+    padding:20px 80px;
+    font-size:50px;
+    border-radius:30px;
+    background-color:transparent;
+}
+
+#sessionEntryPopupOpen:hover{
+    background-color:rgba(0, 0, 0, 0.071);
+    cursor:pointer;
+}
+
+#sessionEntryPopupOpen:active{
+    background-color:rgba(255, 203, 219, 0.674);
+}
+
 h1{
     font-size:80px;
 }
 
-#legEntryPopup{
+#sessionEntryPopup{
     background-color:white;
     position:fixed;
     top:5%;
@@ -27,8 +51,7 @@ h1{
     grid-template-columns: 2fr 3fr;
     visibility: hidden;
 
-    form{
-        // padding:3em;
+    #legForm, #sessionForm{
         line-height:240%;
 
         ::-webkit-inner-spin-button {
@@ -37,7 +60,6 @@ h1{
 
         .genericInput{
             border:none;
-            // border-color:rgb(237, 237, 237);
             border:2px solid white;
             border-bottom: 2px solid black;
             padding:0 10px;     
@@ -45,11 +67,9 @@ h1{
         }
 
         .genericInput:focus{
-            // background-color: rgb(255, 203, 219);
             outline:none;
             border:2px solid white;
             border-bottom: 2px solid rgb(255, 203, 219);
-            // border-color:rgb(255, 203, 219);
         }
 
         .genericInput:disabled{
@@ -84,7 +104,7 @@ h1{
     }
 }
 
-#legEntryPopupClose{
+#sessionEntryPopupClose{
     position:absolute;
     top:10px;
     right:10px;
@@ -157,7 +177,7 @@ h1{
 
 h2{
     padding-left:15px;
-    margin-top:50px;
+    margin-top:60px;
     font-size:30px;
     margin-bottom:5px;
 }
@@ -194,7 +214,7 @@ h2{
 }
 
 #sessionsMainPage{
-    // background-color:rgb(125, 230, 111);
+    background-color:rgb(125, 230, 111);
     height:200px;
     position:absolute;
     bottom:0;
@@ -236,13 +256,4 @@ h3{
 #pastSession0{
     position:absolute;
     visibility:hidden;
-}
-
-#abcdef{
-    position:absolute;
-    top:0px;
-    right:500px;
-    width:50px;
-    height:1000px;
-    background-color: red;
 }

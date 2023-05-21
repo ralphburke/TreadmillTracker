@@ -4,6 +4,18 @@ body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+header{
+    position:fixed;
+    display:flex;
+    justify-content:center;
+    width:100%;
+    top:80px;
+}
+
+h1{
+    font-size:80px;
+}
+
 #legEntryPopup{
     background-color:white;
     position:fixed;
@@ -109,7 +121,7 @@ body{
 
 #calories{
     text-align:right;
-    width:20%;
+    width:10%;
 }
 
 #legRow0{
@@ -152,6 +164,7 @@ h2{
 
 #sessionForm{
     padding:3em;
+    width:80%;
 }
 
 .sessionDiv{
@@ -162,29 +175,74 @@ h2{
 #nameInput{
     font-size:40px;
     margin-bottom:20px;
+    width:100%;
 }
 
 .graph{
     margin:20px;
     display:flex;
     align-items:flex-end;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    border-left:2px solid black;
+    border-bottom:2px solid black;
+    padding:5px 10px 2px 2px;
 }
 
 .bar{
-    border:2px solid white;
+    margin:2px;
 }
 
 #sessionsMainPage{
-    background-color:rgb(125, 230, 111);
-    width:25%;
-    height:20%;
+    // background-color:rgb(125, 230, 111);
+    height:200px;
     position:absolute;
-    bottom:30px;
-    left:30px;
-
+    bottom:0;
+    left:0;
+    display:flex;
+    flex-direction:row;
+    gap:20px;
+    justify-content: flex-start;
+    flex-wrap:nowrap;
+    padding-left:20px;
+    padding-bottom:15px;
 }
 
 .pastSession{
-    background-color: aliceblue;
+    background-color:aliceblue;
+    border:3px solid black;
+    border-radius:10px;
     margin:20px;
+    line-height:5px;
+    width:350px;
+    padding:10px;
+}
+
+h3{
+    margin-left:20px;
+}
+
+.stats{
+    display:flex;
+    justify-content:space-evenly;
+}
+
+.timeStat{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+}
+
+#pastSession0{
+    position:absolute;
+    visibility:hidden;
+}
+
+#abcdef{
+    position:absolute;
+    top:0px;
+    right:500px;
+    width:50px;
+    height:1000px;
+    background-color: red;
 }

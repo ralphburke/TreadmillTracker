@@ -10,13 +10,29 @@
 </head>
 
 <body>
-    <header>Treadmill</header>
+    <header>
+        <h1>TREADMILL TRACKER</h1>
+    </header>
     <button id="legEntryPopupOpen">
         Add new leg
     </button>
+    <section id="sessionsMainPage">
+        <div class="pastSession" id="pastSession0">
+            <h3 class="sessionName"></h3>
+            <div class="graph" id="thePastSessionGraph"></div>
+            <div class="stats">
+                <div class="distanceStat"></div>
+                <div class="timeStat">
+                    <div class="timeStatM"></div> : 
+                    <div class="timeStatS"></div>
+                </div>
+                <div class="calorieStat"></div>
+            </div>
+        </div>
+    </section>
     <section id="legEntryPopup">
         <form id="sessionForm">
-            <input id="nameInput" placeholder="Session Name" class="genericInput">
+            <input id="nameInput" placeholder="Session Name" class="genericInput" required>
             <div class="sessionDiv">
                 <label for="category">Category</label>
                 <select type="text" name="category" id="sessionCategory" class="genericInput">
@@ -95,22 +111,9 @@
         <button id="legEntryPopupClose">X</button>
     </section>
 
-<div class="graph" id="graph1">
-    <!-- <div class="barEx" id="bar1"></div>
-    <div class="barEx" id="bar2"></div>
-    <div class="barEx" id="bar3"></div> -->
-</div>
-
 <button id="make">Construct Graph</button>
 <button id="writeSessions">Write Sessions</button>
 <div id="sessionWrite">sessions</div>
-
-<section id="sessionsMainPage">
-    <div class="pastSession">
-        <h3>Session Name</h3>
-        <div class="graph"></div>
-    </div>
-</section>
 
 <script src="script.js"></script>
 </body>

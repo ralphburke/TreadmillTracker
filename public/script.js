@@ -1,8 +1,5 @@
-const type = document.getElementById("legType");
-const speed = document.getElementById("legSpeed");
-const incline = document.getElementById("legIncline");
-var inclineStore=0;
-var speedStore=0;
+// var inclineStore=0;
+// var speedStore=0;
 resurrectSessions();
 addLegRow();
 
@@ -87,6 +84,8 @@ let session={
     date: new Date().toISOString(),
     id: Date.now(),
     image,
+    totalSpeed:0,
+    totalTime:0
 }
 sessionList.push(session);
 burySessions();
@@ -98,14 +97,13 @@ addLegRow();
 }
 
 function addLeg(element){
-    console.log(element.querySelector(".legSpeed").value);
+    // console.log(element.querySelector(".legSpeed").value);
     let leg={
     type: element.querySelector(".typeInput").value,
-    time: element.querySelector(".legTimeM").value*60+parseInt(element.querySelector(".legTimeS").value+0),
-    speed: element.querySelector(".legSpeed").value+0,
+    time: element.querySelector(".legTimeM").value*60+parseInt(element.querySelector(".legTimeS").value||0),
+    speed: parseInt(element.querySelector(".legSpeed").value)||0,
     incline: element.querySelector(".legIncline").value,
     heart: element.querySelector(".legHeart").value,
-    number: element.id.slice(6)
     }
     legs.push(leg);
 }
@@ -119,32 +117,29 @@ function resurrectSessions(){
     :sessionList=JSON.parse(localStorage.getItem("sessionList"));
 }
 
-function constructGraph(sessionNum){
-    let session=sessionList[sessionNum];
-    let totalTime=0;
-    let biggestSpeed=0;
+function constructGraph(session, graphLocation){
+    session.totalSpeed=0;
+    session.totalTime=0;
+    let maxSpeed=0;
     session.legs.forEach(leg=>{
-        if(leg.speed>parseInt(biggestSpeed)){biggestSpeed=leg.speed};
-        totalTime+=leg.time;
+        if(leg.speed>parseInt(maxSpeed)){maxSpeed=leg.speed};
+        session.totalTime+=leg.time;
+        session.totalSpeed+=leg.speed;
         let newBar=document.createElement("div");
         newBar.setAttribute("data-time", leg.time);
         newBar.setAttribute("data-speed", leg.speed);
         newBar.setAttribute("class", "bar");
-        newBar.setAttribute("id", leg.number);
-        if(leg.type=="Sprint"){        var colour="orange"
-        }else{if(leg.type="Jog"){  var colour="green"
-            }else{                  var colour="blue"
-            }
-        }
+        if(leg.type=="Sprint"){     var colour="orange" }else{
+            if(leg.type=="Jog"){    var colour="green"  }else{
+                                    var colour="blue"   }}
         newBar.setAttribute("data-colour",colour);
-        graphLocation=document.getElementById("graph1");
         graphLocation.appendChild(newBar);
     })
-    let barWidth=500;
-    let barHeight=100;
+    let graphWidth=400;
+    let graphHeight=30;
     graphLocation.querySelectorAll(".bar").forEach(bar=>{
-        bar.style.width=(barWidth*bar.getAttribute("data-time")/totalTime)+"px";
-        bar.style.height=(barHeight*bar.getAttribute("data-speed")/biggestSpeed)+"px";
+        bar.style.width=(graphWidth*bar.getAttribute("data-time")/session.totalTime)+"px";
+        bar.style.height=(graphHeight*bar.getAttribute("data-speed")/maxSpeed)+"px";
         bar.style.backgroundColor=bar.getAttribute("data-colour");
     })
 }
@@ -152,8 +147,8 @@ function constructGraph(sessionNum){
 
 document.getElementById("writeSessions").addEventListener("click", logger);
 function logger(){
-    console.log(sessionList);
-
+    // console.log(sessionList);
+    pastSessionsMainPage();
     // document.querySelectorAll(".bar").forEach(bar=>{
     //     console.log(bar.style.width);
     //     bar.style.width=bar.style.width.slice(0,-2)*0.5+"px";
@@ -161,8 +156,30 @@ function logger(){
     // })
 }
 
-document.getElementById("make").addEventListener("click", constructor);
+// document.getElementById("make").addEventListener("click", constructor);
 
-function constructor(){
-    constructGraph(sessionList.length-1);
+// function constructor(){
+//     pastSessionConstruct(sessionList[sessionList.length-1]);
+// }
+
+function pastSessionConstruct(session){
+    document.getElementById("sessionsMainPage").querySelectorAll(".pastSession").forEach(pastSession=>{
+        if(pastSession.id!=="pastSession0"){pastSession.remove()}
+    })
+    blankSession=document.getElementById("pastSession0");
+    pastSessionCopy=blankSession.cloneNode(true);
+    pastSessionCopy.removeAttribute("id");
+    pastSessionCopy.querySelector(".sessionName").innerHTML=session.name;
+    constructGraph(session, pastSessionCopy.querySelector(".graph"));
+    pastSessionCopy.querySelector(".distanceStat").innerHTML=((session.totalTime/3600)*session.totalSpeed/session.legs.length).toFixed(2)+"<span class=\"sessionUnits\"> km/h</span>";
+    pastSessionCopy.querySelector(".timeStatM").innerHTML=Math.floor(session.totalTime/60);
+    pastSessionCopy.querySelector(".timeStatS").innerHTML=session.totalTime%60;
+    if(session.calories!==""){pastSessionCopy.querySelector(".calorieStat").innerHTML=session.calories+"<span class=\"sessionUnits\"> kcal</span>"}else{
+        pastSessionCopy.querySelector(".calorieStat").remove();
+    };
+    document.getElementById("sessionsMainPage").appendChild(pastSessionCopy);
+}
+
+function pastSessionsMainPage(){
+    sessionList.forEach(session=>pastSessionConstruct(session));
 }

@@ -1,4 +1,5 @@
 resurrectSessions();
+writeSessions();
 addLegRow();
 
 document.getElementById("sessionEntryPopupClose").onclick=function(){
@@ -16,11 +17,8 @@ document.getElementById("addLegButton").addEventListener("click", function(){
 function addLegRow(){
     blankRow=document.getElementById("legRow0");
     legRowCopy=blankRow.cloneNode(true);
-    // console.log(document.getElementsByClassName("legEntryRow").length);
     let rowNum=document.getElementsByClassName("legEntryRow").length;
-    console.log(rowNum);
     rowNum==1?legRowCopy.id="legRow1":legRowCopy.removeAttribute("id");
-    // legRowCopy.id="legRow"+(parseInt(document.getElementsByClassName("legEntryRow")[rowNum-1].id.slice(6))+1);
     if(legRowCopy.id==="legRow1"){legRowCopy.children[8].style.visibility="hidden"};
     document.getElementById("legForm").insertBefore(legRowCopy, document.getElementById("addLegButton"));
     document.getElementsByClassName("typeInput")[rowNum-1].addEventListener("change", event=>{
@@ -50,7 +48,10 @@ function deleteLegRow(deleteButton){
         deleteButton.parentNode.remove();
 }
 
-document.getElementById("sessionEntryPopup").addEventListener("submit", addSession);
+document.getElementById("sessionEntryPopup").addEventListener("submit", event=>{
+    event.preventDefault();
+    addSession();
+});
 
 function addSession(){
 let legRows=Array.from(document.getElementById("legForm").children);
@@ -82,8 +83,8 @@ let session={
 }
 sessionList.push(session);
 burySessions();
-document.getElementById("sessionForm").reset();
-    document.querySelectorAll(".legEntryRow").forEach(element=>{
+document.getElementById("sessionEntryPopup").reset();
+document.querySelectorAll(".legEntryRow").forEach(element=>{
     if(element.id!=="legRow0"){element.remove()}}
 )
 addLegRow();
@@ -119,14 +120,23 @@ function pastSessionConstruct(session){
     pastSessionCopy.removeAttribute("id");
     pastSessionCopy.querySelector(".sessionName").innerHTML=session.name;
     constructGraph(session, pastSessionCopy.querySelector(".graph"));
-    pastSessionCopy.querySelector(".distanceStat").innerHTML=((session.totalTime/3600)*session.totalSpeed/session.legs.length).toFixed(2)+"<span class=\"sessionUnits\"> km/h</span>";
+    pastSessionCopy.querySelector(".distanceStat").innerHTML=((session.totalTime/3600)*session.totalSpeed/session.legs.length).toFixed(2)+"<span class=\"sessionUnits\"> km</span>";
     pastSessionCopy.querySelector(".timeStatM").innerHTML=Math.floor(session.totalTime/60);
-    pastSessionCopy.querySelector(".timeStatS").innerHTML=session.totalTime%60;
+    let timeS=(session.totalTime%60).toString();
+    if(timeS[1]==undefined){timeS="0"+timeS};
+    pastSessionCopy.querySelector(".timeStatS").innerHTML=timeS;
     if(session.calories!==""){pastSessionCopy.querySelector(".calorieStat").innerHTML=session.calories+"<span class=\"sessionUnits\"> kcal</span>"}else{
         pastSessionCopy.querySelector(".calorieStat").remove();
     };
-    document.getElementById("sessionsMainPage").appendChild(pastSessionCopy);
+    pastSessionCopy.addEventListener("click", event=>{
+        viewSession((Array.prototype.indexOf.call(document.querySelectorAll(".pastSession"),event.target.closest(".pastSession"))))
+    });
+    document.getElementById("sessionsRow").appendChild(pastSessionCopy);
 }
+
+// function viewSession(index){
+
+// }
 
 function constructGraph(session, graphLocation){
     session.totalSpeed=0;
@@ -140,26 +150,35 @@ function constructGraph(session, graphLocation){
         newBar.setAttribute("data-time", leg.time);
         newBar.setAttribute("data-speed", leg.speed);
         newBar.setAttribute("class", "bar");
-        if(leg.type=="Sprint"){     var colour="orange" }else{
-            if(leg.type=="Jog"){    var colour="green"  }else{
-                                    var colour="blue"   }}
+        if(leg.type=="Sprint"){ var colour="Sprint" }else{
+        if(leg.type=="Jog"){    var colour="Jog"    }else{
+        if(leg.type=="Walk"){   var colour="Walk"   }else{
+                                var colour="Rest"   }}}
         newBar.setAttribute("data-colour",colour);
         graphLocation.appendChild(newBar);
     })
     let graphWidth=400;
-    let graphHeight=30;
+    let graphHeight=50;
     graphLocation.querySelectorAll(".bar").forEach(bar=>{
         bar.style.width=(graphWidth*bar.getAttribute("data-time")/session.totalTime)+"px";
         bar.style.height=(graphHeight*bar.getAttribute("data-speed")/maxSpeed)+"px";
-        bar.style.backgroundColor=bar.getAttribute("data-colour");
     })
 }
 
-document.getElementById("writeSessions").addEventListener("click", function(){
-    // writeSessions();
-    document.querySelectorAll("input,select").forEach(element=>{
-        if(element.hasAttribute("required")){
-            if(element.value==""){console.log("asaadsfa")}
-        }
-    })
+document.getElementById("showFullHistory").addEventListener("click", function(){
+    showHistorySessions();
+    console.log(document.getElementById("history").style.visibility);
+    document.getElementById("history").style.visibility="visible";
 })
+
+document.getElementById("historyPopupClose").addEventListener("click", function(){
+    document.getElementById("history").style.visibility="hidden";
+    historySessions.querySelectorAll(".pastSession").forEach(element=>element.remove())
+})
+
+function showHistorySessions(){
+    let historySessions=document.getElementById("historySessions");
+    document.querySelectorAll(".pastSession").forEach(element=>{
+        if(element.id!=="pastSession0"){historySessions.appendChild(element.cloneNode(true))}
+    })
+}

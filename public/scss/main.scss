@@ -2,6 +2,7 @@ body{
     background-color: aliceblue;
     white-space:nowrap;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overscroll-behavior-x:none;
 }
 
 header{
@@ -9,7 +10,7 @@ header{
     display:flex;
     justify-content:center;
     width:100%;
-    top:80px;
+    top:50px;
 }
 
 #centreButton{
@@ -17,27 +18,26 @@ header{
     display:flex;
     justify-content:center;
     width:100%;
-    top:260px;
+    top:250px;
 }
 
 #sessionEntryPopupOpen{
-    padding:20px 80px;
+    padding:20px 80px 20px 70px;
     font-size:50px;
     border-radius:30px;
+    border:3px solid black;
     background-color:transparent;
-}
-
-#sessionEntryPopupOpen:hover{
-    background-color:rgba(0, 0, 0, 0.071);
-    cursor:pointer;
-}
-
-#sessionEntryPopupOpen:active{
-    background-color:rgba(255, 203, 219, 0.674);
+    &:hover{
+        background-color:rgba(0, 0, 0, 0.071);
+        cursor:pointer;
+    }
+    &:active{
+        background-color:rgba(255, 203, 219, 0.674);
+    }
 }
 
 h1{
-    font-size:80px;
+    font-size:90px;
 }
 
 #sessionEntryPopup{
@@ -49,7 +49,7 @@ h1{
     right:3%;
     display:grid;
     grid-template-columns: 2fr 3fr;
-    visibility: hidden;
+    visibility:hidden;
 
     #legForm, #sessionForm{
         line-height:240%;
@@ -64,16 +64,15 @@ h1{
             border-bottom: 2px solid black;
             padding:0 10px;     
             border-radius:10px;
-        }
 
-        .genericInput:focus{
-            outline:none;
-            border:2px solid white;
-            border-bottom: 2px solid rgb(255, 203, 219);
-        }
-
-        .genericInput:disabled{
-            background-color:rgb(240, 240, 240);
+            &:focus{
+                outline:none;
+                border:2px solid white;
+                border-bottom: 2px solid rgb(255, 203, 219);
+            }
+            &:disabled{
+                background-color:rgb(240, 240, 240);
+            }
         }
 
         .typeInput{
@@ -104,7 +103,7 @@ h1{
     }
 }
 
-#sessionEntryPopupClose{
+.closeButton{
     position:absolute;
     top:10px;
     right:10px;
@@ -136,7 +135,7 @@ h1{
 
 #calorieInput{
     display:flex;
-    gap:15px;
+    gap:0;
 }
 
 #calories{
@@ -175,7 +174,7 @@ h1{
     flex-direction:column;
 }
 
-h2{
+h3{
     padding-left:15px;
     margin-top:60px;
     font-size:30px;
@@ -211,49 +210,183 @@ h2{
 
 .bar{
     margin:2px;
+    &[data-colour="Sprint"]{
+        background-color:orange;
+        &:hover{background-color:rgb(255, 214, 138)}
+    }
+    &[data-colour="Jog"]{
+        background-color: green;
+        &:hover{background-color:rgb(90, 183, 90)}
+    }
+    &[data-colour="Walk"]{
+        background-color: blue;
+        &:hover{background-color:rgb(119, 119, 255)}
+    }
+    &[data-colour="Rest"]{
+        background-color: transparent;
+        border:1.5px solid black;
+        &:hover{border:1.5px solid rgb(147, 147, 147)}
+    }
 }
 
-#sessionsMainPage{
-    background-color:rgb(125, 230, 111);
+#sessionsRow{
     height:200px;
     position:absolute;
     bottom:0;
     left:0;
     display:flex;
     flex-direction:row;
-    gap:20px;
     justify-content: flex-start;
     flex-wrap:nowrap;
     padding-left:20px;
     padding-bottom:15px;
-}
 
-.pastSession{
-    background-color:aliceblue;
-    border:3px solid black;
-    border-radius:10px;
-    margin:20px;
-    line-height:5px;
-    width:350px;
-    padding:10px;
+    .pastSession{
+        background-color:white;
+        border:3px solid black;
+        border-radius:10px;
+        margin:20px;
+        line-height:5px;
+        width:376px;
+        padding:0px;
+    
+        &:hover{
+            border-color:rgb(255, 203, 219);
+            cursor:pointer;
+        }
+        &:active{
+            background-color:rgb(255, 203, 219);
+        }
+    }
+
+    .sessionName{
+        margin-left:30px;
+        font-size:20px;
+        margin-bottom:0;
+    }
+
+    .graph{
+        margin-bottom:15px;
+    }
+
+    .pastSessionContent{
+        width:60%;
+    }
+
+    .stats{
+        display:flex;
+        justify-content:space-evenly;
+        font-size:15px;
+    }
+
+    .timeStat{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+    }
 }
 
 h3{
     margin-left:20px;
 }
 
-.stats{
-    display:flex;
-    justify-content:space-evenly;
-}
-
-.timeStat{
-    display:flex;
-    flex-direction:row;
-    flex-wrap:nowrap;
-}
-
 #pastSession0{
     position:absolute;
     visibility:hidden;
+}
+
+#sessionsRowLabel{
+    position:fixed;
+    bottom:205px;
+    left:50px;
+    width:356px;
+    display:flex;
+    justify-content:space-between;
+}
+
+#showFullHistory{
+    text-decoration:underline;
+    &:hover{
+        cursor:pointer;
+    }
+    &:active{
+        color:rgb(255, 203, 219);
+    }
+}
+
+#history{
+    background-color:rgb(179, 179, 179);
+    position:fixed;
+    top:5%;
+    bottom:5%;
+    left:3%;
+    right:3%;
+    visibility:hidden;
+}
+
+#historyTitle{
+    margin-top:-20px;
+    font-size:40px;
+    padding:20px 0 10px;
+    margin:0;
+}
+
+#fullHistory{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+#historySessions{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+    overflow-y:scroll;
+    height:450px;
+
+    .pastSession{
+        background-color:rgb(219, 175, 214);
+        border:3px solid black;
+        border-radius:0;
+        margin:15px;
+        line-height:5px;
+        width:325px;
+        padding:0px;
+    
+        &:hover{
+            border-color:rgb(255, 203, 219);
+            cursor:pointer;
+        }
+        &:active{
+            background-color:rgb(255, 203, 219);
+        }
+    }
+
+    .sessionName{
+        margin-left:30px;
+        font-size:20px;
+        margin-bottom:0;
+    }
+
+    .graph{
+        margin-bottom:15px;
+    }
+
+    .pastSessionContent{
+        width:60%;
+    }
+
+    .stats{
+        display:flex;
+        justify-content:space-evenly;
+        font-size:15px;
+    }
+
+    .timeStat{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+    }
 }

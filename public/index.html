@@ -14,29 +14,35 @@
         <h1>TREADMILL TRACKER</h1>
     </header>
     <div id="centreButton">
-        <button id="sessionEntryPopupOpen">
+        <button type="button" id="sessionEntryPopupOpen">
             + New Session
         </button>
     </div>
-    <section id="sessionsMainPage">
+    <section id="sessionsRow">
+        <div id="sessionsRowLabel">
+            <div id="pastSessions">Past sessions</div>
+            <div id="showFullHistory">Show full history</div>
+        </div>
         <div class="pastSession" id="pastSession0">
-            <h3 class="sessionName"></h3>
-            <div class="graph" id="thePastSessionGraph"></div>
-            <div class="stats">
-                <div class="distanceStat"></div>
-                <div class="timeStat">
-                    <div class="timeStatM"></div> : 
-                    <div class="timeStatS"></div>
+            <div class="pastSessionContent">
+                <h4 class="sessionName"></h4>
+                <div class="graph" id="thePastSessionGraph"></div>
+                <div class="stats">
+                    <div class="distanceStat"></div>
+                    <div class="timeStat">
+                        <div class="timeStatM"></div> : 
+                        <div class="timeStatS"></div>
+                    </div>
+                    <div class="calorieStat"></div>
                 </div>
-                <div class="calorieStat"></div>
             </div>
         </div>
     </section>
     <form id="sessionEntryPopup">
-        <div id="sessionForm">
+        <section id="sessionForm">
             <input id="nameInput" placeholder="Session Name" class="genericInput" required>
             <div class="sessionDiv">
-                <label for="category">Category</label>
+                <label for="sessionCategory">Category</label>
                 <select type="text" name="category" id="sessionCategory" class="genericInput">
                     <option value="Sprints">Sprints</option>
                     <option value="Jog">Jog</option>
@@ -45,7 +51,7 @@
                 </select>
             </div>
             <div class="sessionDiv">
-                <label for="template">Template</label>
+                <label for="sessionTemplate">Template</label>
                 <select type="text" name="template" id="sessionTemplate" class="genericInput">
                     <option value="None">None</option>
                 </select>
@@ -79,19 +85,19 @@
                 <label for="tiredness5" id="exhausted">Exhausted</label>
             </div>
             <div id="calorieInput">
-                <label for="calories">Calories burned</label>
+                <label for="calories">Calories burned:</label>
                 <input type="number" name="calories" class="genericInput" id="calories" min="0">
-                <span class="units">kcal</span>
+                <span class="sessionUnits">kcal</span>
             </div>
-        </div>
-        <div id="legsContainer">
-            <h2>Legs</h2>
+        </section>
+        <section id="legsContainer">
+            <h3>Legs</h3>
             <div id="legForm">
                 <input type="button" value="+" id="addLegButton">
             </div>
             <button type="submit" id="addSession">Add Session</button>
-        </div>
-        <button id="sessionEntryPopupClose">X</button>
+        </section>
+        <button type="button" class="closeButton" id="sessionEntryPopupClose">X</button>
     </form>
     <div class="legEntryRow" id="legRow0">
         <select class="typeInput genericInput" type="text" name="legType" id="legType">
@@ -112,9 +118,15 @@
         <span class="units">bpm</span>
         <input type="button" name="legRowDelete" class="legRowDelete" value="X">
     </div>
-    <button id="writeSessions">
-        Write Sessions
-    </button>
+    <section id="history">
+        <div id="fullHistory">
+            <h2 id="historyTitle">History</h2>
+            <section id="historySessions">
+                
+            </section>
+        </div>
+        <button type="button" class="closeButton" id="historyPopupClose">X</button>
+    </section>
 <script src="script.js"></script>
 </body>
 

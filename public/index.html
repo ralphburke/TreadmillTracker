@@ -119,16 +119,26 @@
         <input type="button" name="legRowDelete" class="legRowDelete" value="X">
     </div>
     <section id="history">
+        <div id="sessionHistory">
+            <div id="sessionHistoryLeft">
+                <h2 id="historyName">Session Name</h2>
+                <div id="historyCategory">Category: Jog</div>
+                <div id="historyGraph"></div>
+                <div class="smallText">Added </div>
+                <div class="smallText">ID: </div>
+            </div>
+            <div id="sessionHistoryRight">
+
+            </div>
+            <button type="button" class="backButton" id="backToFullHistory">&lt Show Full History</button>
+        </div>
         <div id="fullHistory">
-            <h2 id="historyTitle">History</h2>
+            <h2 id="historyName">History</h2>
             <section id="historySessions">
-                
             </section>
         </div>
         <button type="button" class="closeButton" id="historyPopupClose">X</button>
     </section>
-    <button type="button" id="writeTemplates">Write Templates</button>
-    <button type="button" id="resurrectTemplates">Resurrect Templates</button>
 <script src="script.js"></script>
 </body>
 

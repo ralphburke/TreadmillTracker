@@ -2,21 +2,23 @@ resurrectSessions();
 writeSessions();
 addLegRow();
 
-document.getElementById("sessionEntryPopupClose").onclick=function(){
+document.getElementById("sessionEntryPopupClose").addEventListener("click",function(){
     closeSessionEntry();
-}
+    moveFromHistory();
+})
 
 function closeSessionEntry(){
     document.getElementById("sessionEntryPopup").style.visibility="hidden";
     resetTemplates();
 }
 
-document.getElementById("sessionEntryPopupOpen").onclick=function(){
+document.getElementById("sessionEntryPopupOpen").addEventListener("click",function(){
     sessionReset();
     resurrectTemplates();
     listTemplates();
+    moveToHistory();
     document.getElementById("sessionEntryPopup").style.visibility="visible";
-}
+})
 
 document.getElementById("addLegButton").addEventListener("click", function(){
     addLegRow();
@@ -151,7 +153,7 @@ function listTemplates(){
         templateOption.setAttribute("class", "templateOption")
         templateOption.setAttribute("value", template.name);
         templateOption.setAttribute("id", template.name);
-        templateOption.innerHTML=template.name;
+        templateOption.innerText=template.name;
         document.getElementById("sessionTemplate").appendChild(templateOption);
     })
 }
@@ -161,14 +163,6 @@ function resetTemplates(){
         if(option.id!=="templateNone"){option.remove()}
     })
 }
-
-document.getElementById("writeTemplates").addEventListener("click", function(){
-    console.log(templateList);
-})
-
-document.getElementById("resurrectTemplates").addEventListener("click", function(){
-    resurrectTemplates();
-})
 
 document.getElementById("sessionTemplate").addEventListener("change", event=>{
     let templateValue=document.getElementById("sessionTemplate").value;
@@ -203,25 +197,22 @@ function pastSessionConstruct(session){
     blankSession=document.getElementById("pastSession0");
     pastSessionCopy=blankSession.cloneNode(true);
     pastSessionCopy.removeAttribute("id");
-    pastSessionCopy.querySelector(".sessionName").innerHTML=session.name;
+    pastSessionCopy.querySelector(".sessionName").innerText=session.name;
     constructGraph(session, pastSessionCopy.querySelector(".graph"));
     pastSessionCopy.querySelector(".distanceStat").innerHTML=((session.totalTime/3600)*session.totalSpeed/session.legs.length).toFixed(2)+"<span class=\"sessionUnits\"> km</span>";
-    pastSessionCopy.querySelector(".timeStatM").innerHTML=Math.floor(session.totalTime/60);
+    pastSessionCopy.querySelector(".timeStatM").innerText=Math.floor(session.totalTime/60);
     let timeS=(session.totalTime%60).toString();
     if(timeS[1]==undefined){timeS="0"+timeS};
-    pastSessionCopy.querySelector(".timeStatS").innerHTML=timeS;
+    pastSessionCopy.querySelector(".timeStatS").innerText=timeS;
     if(session.calories!==""){pastSessionCopy.querySelector(".calorieStat").innerHTML=session.calories+"<span class=\"sessionUnits\"> kcal</span>"}else{
         pastSessionCopy.querySelector(".calorieStat").remove();
     };
     pastSessionCopy.addEventListener("click", event=>{
-        viewSession((Array.prototype.indexOf.call(document.querySelectorAll(".pastSession"),event.target.closest(".pastSession")))-1)
+        let pastSession=event.target.closest(".pastSession");
+        let index=Array.prototype.indexOf.call(document.querySelectorAll(".pastSession"),pastSession)-1
+        viewSession(pastSession, sessionList[index])
     });
     document.getElementById("sessionsRow").appendChild(pastSessionCopy);
-}
-
-function viewSession(index){
-    // console.log(sessionList[index]);
-    
 }
 
 function constructGraph(session, graphLocation){
@@ -251,13 +242,37 @@ function constructGraph(session, graphLocation){
     })
 }
 
+function viewSession(pastSession, session){
+    moveToHistory();
+    document.getElementById("history").style.visibility="visible";
+    document.getElementById("sessionHistory").style.visibility="visible";
+    document.getElementById("fullHistory").style.visibility="hidden";
+    let historyGraph=document.getElementById("historyGraph");
+    historyGraph.innerHTML="";
+    historyGraph.appendChild(pastSession.querySelector("#thePastSessionGraph").cloneNode(true));
+    historyGraph.appendChild(pastSession.querySelector(".stats").cloneNode(true));
+    enlargeGraph(historyGraph);
+    let leftSide=document.getElementById("sessionHistoryLeft");
+    leftSide.querySelector("#historyName").innerText=session.name;
+    leftSide.querySelector("#historyCategory").innerText="Category: "+session.category;
+}
+
+function enlargeGraph(graphLocation){
+    graphLocation.querySelectorAll(".bar").forEach(bar=>{
+        bar.style.height=(2*bar.style.height.slice(0,-2))+"px";
+    })
+}
+
 document.getElementById("showFullHistory").addEventListener("click", function(){
     moveToHistory();
     document.getElementById("history").style.visibility="visible";
+    document.getElementById("fullHistory").style.visibility="visible";
 })
 
 document.getElementById("historyPopupClose").addEventListener("click", function(){
     document.getElementById("history").style.visibility="hidden";
+    document.getElementById("sessionHistory").style.visibility="hidden";
+    document.getElementById("fullHistory").style.visibility="hidden";
     moveFromHistory();
 })
 
@@ -270,3 +285,9 @@ function moveFromHistory(){
     let sessionsRow=document.getElementById("sessionsRow");
     document.querySelectorAll(".pastSession").forEach(element=>sessionsRow.appendChild(element));
 }
+
+document.getElementById("backToFullHistory").addEventListener("click", function(){
+    document.getElementById("fullHistory").style.visibility="visible";
+    document.getElementById("sessionHistory").style.visibility="hidden";
+
+})

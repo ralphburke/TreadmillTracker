@@ -391,3 +391,59 @@ h3{
         flex-wrap:nowrap;
     }
 }
+
+#sessionHistory{
+    display:grid;
+    grid-template-columns: 2fr 3fr;
+    visibility:hidden;
+    position:fixed;
+    margin:20px 80px;
+    line-height:240%;
+}
+
+#historyName{
+    font-size:40px;
+    margin-top:40px;
+}
+
+#sessionHistoryLeft{
+    background-color:aliceblue;
+}
+
+#sessionHistoryRight{
+    background-color:rgb(240, 255, 252);
+}
+
+#historyGraph{
+    width:100%;
+
+    .stats{
+        display:flex;
+        justify-content:space-evenly;
+        font-size:15px;
+    }
+
+    .timeStat{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+    }
+}
+
+.backButton{
+    position:absolute;
+    top:0;
+    left:-60px;
+    font-size:15px;
+    border:none;
+    background:none;
+    text-decoration:underline;
+
+    &:hover{
+        cursor:pointer;
+    }
+
+    &:active{
+        color:grey;
+    }
+}

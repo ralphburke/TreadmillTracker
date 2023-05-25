@@ -315,7 +315,7 @@ h3{
 }
 
 #history{
-    background-color:rgb(179, 179, 179);
+    background-color:white;
     position:fixed;
     top:5%;
     bottom:5%;
@@ -336,24 +336,25 @@ h3{
     flex-direction:column;
     justify-content:flex-start;
     align-items:center;
+    margin:0 40px;
 }
 
 #historySessions{
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-    justify-content:space-evenly;
+    justify-content:space-between;
     overflow-y:scroll;
     height:450px;
 
     .pastSession{
-        background-color:rgb(219, 175, 214);
         border:3px solid black;
         border-radius:0;
         margin:15px;
         line-height:5px;
         width:325px;
         padding:0px;
+        padding-bottom:20px;
     
         &:hover{
             border-color:rgb(255, 203, 219);

@@ -53,7 +53,7 @@
             <div class="sessionDiv">
                 <label for="sessionTemplate">Template</label>
                 <select type="text" name="template" id="sessionTemplate" class="genericInput">
-                    <option value="None">None</option>
+                    <option class="templateOption" id="templateNone" value="None">None</option>
                 </select>
             </div>
             <fieldset class="templateRadio">
@@ -65,19 +65,19 @@
             </fieldset>
             <div id="tirednessRating">
                 <div class="tirednessDiv">
-                    <input type="radio" name="tiredness" id="tiredness1" value="1">
+                    <input class="tiredness" type="radio" name="tiredness" id="tiredness1" value="1">
                 </div>
                 <div class="tirednessDiv">
-                    <input type="radio" name="tiredness" id="tiredness2" value="2">
+                    <input class="tiredness" type="radio" name="tiredness" id="tiredness2" value="2">
                 </div>
                 <div class="tirednessDiv">
-                    <input type="radio" name="tiredness" id="tiredness3" value="3">
+                    <input class="tiredness" type="radio" name="tiredness" id="tiredness3" value="3">
                 </div>
                 <div class="tirednessDiv">
-                    <input type="radio" name="tiredness" id="tiredness4" value="4">
+                    <input class="tiredness" type="radio" name="tiredness" id="tiredness4" value="4">
                 </div>
                 <div class="tirednessDiv">
-                    <input type="radio" name="tiredness" id="tiredness5" value="5">
+                    <input class="tiredness" type="radio" name="tiredness" id="tiredness5" value="5">
                 </div>
             </div>
             <div id="tirednessLabel">
@@ -127,6 +127,8 @@
         </div>
         <button type="button" class="closeButton" id="historyPopupClose">X</button>
     </section>
+    <button type="button" id="writeTemplates">Write Templates</button>
+    <button type="button" id="resurrectTemplates">Resurrect Templates</button>
 <script src="script.js"></script>
 </body>
 

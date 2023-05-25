@@ -3,10 +3,18 @@ writeSessions();
 addLegRow();
 
 document.getElementById("sessionEntryPopupClose").onclick=function(){
+    closeSessionEntry();
+}
+
+function closeSessionEntry(){
     document.getElementById("sessionEntryPopup").style.visibility="hidden";
+    resetTemplates();
 }
 
 document.getElementById("sessionEntryPopupOpen").onclick=function(){
+    sessionReset();
+    resurrectTemplates();
+    listTemplates();
     document.getElementById("sessionEntryPopup").style.visibility="visible";
 }
 
@@ -51,6 +59,7 @@ function deleteLegRow(deleteButton){
 document.getElementById("sessionEntryPopup").addEventListener("submit", event=>{
     event.preventDefault();
     addSession();
+    closeSessionEntry;
 });
 
 function addSession(){
@@ -83,12 +92,29 @@ let session={
 }
 sessionList.push(session);
 burySessions();
-document.getElementById("sessionEntryPopup").reset();
-document.querySelectorAll(".legEntryRow").forEach(element=>{
-    if(element.id!=="legRow0"){element.remove()}}
-)
-addLegRow();
+
+if(document.getElementById("templateYes").checked==1){
+    let template={
+        name: document.getElementById("nameInput").value,
+        category,
+        tiredness,
+        calories: document.getElementById("calories").value,
+        legs,
+    }
+    templateList.push(template);
+    buryTemplates();
+}
+sessionReset();
 pastSessionConstruct(sessionList[sessionList.length-1]);
+}
+
+function sessionReset(){
+    document.getElementById("sessionEntryPopup").reset();
+    document.querySelectorAll(".tiredness").forEach(element=>{element.checked=false});
+    document.querySelectorAll(".legEntryRow").forEach(element=>{
+        if(element.id!=="legRow0"){element.remove()}}
+    )
+    addLegRow();
 }
 
 function addLeg(element){
@@ -110,6 +136,66 @@ function resurrectSessions(){
     localStorage.getItem("sessionList")===null?sessionList=[]:sessionList=JSON.parse(localStorage.getItem("sessionList"));
 }
 
+function buryTemplates(){
+    localStorage.setItem("templateList", JSON.stringify(templateList));
+}
+
+function resurrectTemplates(){
+    localStorage.getItem("templateList")===null?templateList=[]:templateList=JSON.parse(localStorage.getItem("templateList"));
+}
+
+function listTemplates(){
+    templateList.forEach(template=>{
+        let templateOption=document.createElement("option");
+        templateOption.setAttribute("data-index", templateList.findIndex(object=>object===template));
+        templateOption.setAttribute("class", "templateOption")
+        templateOption.setAttribute("value", template.name);
+        templateOption.setAttribute("id", template.name);
+        templateOption.innerHTML=template.name;
+        document.getElementById("sessionTemplate").appendChild(templateOption);
+    })
+}
+
+function resetTemplates(){
+    document.querySelectorAll(".templateOption").forEach(option=>{
+        if(option.id!=="templateNone"){option.remove()}
+    })
+}
+
+document.getElementById("writeTemplates").addEventListener("click", function(){
+    console.log(templateList);
+})
+
+document.getElementById("resurrectTemplates").addEventListener("click", function(){
+    resurrectTemplates();
+})
+
+document.getElementById("sessionTemplate").addEventListener("change", event=>{
+    let templateValue=document.getElementById("sessionTemplate").value;
+    sessionReset();
+    if(templateValue!=="None"){
+        document.getElementById("sessionTemplate").value=templateValue;
+        let template=templateList[document.getElementById(templateValue).getAttribute("data-index")];
+        document.getElementById("nameInput").value=template.name;
+        document.getElementById("sessionCategory").value=template.category;
+        document.getElementById("calories").value=template.calories;
+        document.getElementById("tiredness"+template.tiredness).checked=true;
+        template.legs.forEach(leg=>{
+            allRows=document.getElementById("legForm").children;
+            let row=allRows[allRows.length-2];
+            console.log(allRows);
+            row.querySelector(".typeInput").value=leg.type;
+            row.querySelector(".legTimeM").value=Math.floor(leg.time/60);
+            row.querySelector(".legTimeS").value=leg.time%60;
+            row.querySelector(".legSpeed").value=leg.speed;
+            row.querySelector(".legIncline").value=leg.incline;
+            row.querySelector(".legHeart").value=leg.heart;
+            addLegRow();
+        })
+        allRows[allRows.length-2].remove();
+    }
+})
+
 function writeSessions(){
     sessionList.forEach(session=>pastSessionConstruct(session));
 }
@@ -129,14 +215,14 @@ function pastSessionConstruct(session){
         pastSessionCopy.querySelector(".calorieStat").remove();
     };
     pastSessionCopy.addEventListener("click", event=>{
-        viewSession((Array.prototype.indexOf.call(document.querySelectorAll(".pastSession"),event.target.closest(".pastSession"))))
+        viewSession((Array.prototype.indexOf.call(document.querySelectorAll(".pastSession"),event.target.closest(".pastSession")))-1)
     });
     document.getElementById("sessionsRow").appendChild(pastSessionCopy);
 }
 
-// function viewSession(index){
-
-// }
+function viewSession(index){
+    console.log(sessionList[index]);
+}
 
 function constructGraph(session, graphLocation){
     session.totalSpeed=0;
@@ -167,7 +253,6 @@ function constructGraph(session, graphLocation){
 
 document.getElementById("showFullHistory").addEventListener("click", function(){
     showHistorySessions();
-    console.log(document.getElementById("history").style.visibility);
     document.getElementById("history").style.visibility="visible";
 })
 

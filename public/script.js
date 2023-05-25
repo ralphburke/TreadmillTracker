@@ -183,7 +183,6 @@ document.getElementById("sessionTemplate").addEventListener("change", event=>{
         template.legs.forEach(leg=>{
             allRows=document.getElementById("legForm").children;
             let row=allRows[allRows.length-2];
-            console.log(allRows);
             row.querySelector(".typeInput").value=leg.type;
             row.querySelector(".legTimeM").value=Math.floor(leg.time/60);
             row.querySelector(".legTimeS").value=leg.time%60;
@@ -221,7 +220,8 @@ function pastSessionConstruct(session){
 }
 
 function viewSession(index){
-    console.log(sessionList[index]);
+    // console.log(sessionList[index]);
+    
 }
 
 function constructGraph(session, graphLocation){
@@ -252,18 +252,21 @@ function constructGraph(session, graphLocation){
 }
 
 document.getElementById("showFullHistory").addEventListener("click", function(){
-    showHistorySessions();
+    moveToHistory();
     document.getElementById("history").style.visibility="visible";
 })
 
 document.getElementById("historyPopupClose").addEventListener("click", function(){
     document.getElementById("history").style.visibility="hidden";
-    historySessions.querySelectorAll(".pastSession").forEach(element=>element.remove())
+    moveFromHistory();
 })
 
-function showHistorySessions(){
+function moveToHistory(){
     let historySessions=document.getElementById("historySessions");
-    document.querySelectorAll(".pastSession").forEach(element=>{
-        if(element.id!=="pastSession0"){historySessions.appendChild(element.cloneNode(true))}
-    })
+    document.querySelectorAll(".pastSession").forEach(element=>historySessions.appendChild(element));
+}
+
+function moveFromHistory(){
+    let sessionsRow=document.getElementById("sessionsRow");
+    document.querySelectorAll(".pastSession").forEach(element=>sessionsRow.appendChild(element));
 }

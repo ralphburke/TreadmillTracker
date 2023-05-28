@@ -40,10 +40,10 @@
     </section>
     <form id="sessionEntryPopup">
         <section id="sessionForm">
-            <input id="nameInput" placeholder="Session Name" class="genericInput" required>
+            <input id="nameInput" placeholder="Session Name" required>
             <div class="sessionDiv">
                 <label for="sessionCategory">Category</label>
-                <select type="text" name="category" id="sessionCategory" class="genericInput">
+                <select type="text" name="category" id="sessionCategory" class="genericInputSession">
                     <option value="Sprints">Sprints</option>
                     <option value="Jog">Jog</option>
                     <option value="Endurance">Endurance</option>
@@ -52,7 +52,7 @@
             </div>
             <div class="sessionDiv">
                 <label for="sessionTemplate">Template</label>
-                <select type="text" name="template" id="sessionTemplate" class="genericInput">
+                <select type="text" name="template" id="sessionTemplate" class="genericInputSession">
                     <option class="templateOption" id="templateNone" value="None">None</option>
                 </select>
             </div>
@@ -86,7 +86,7 @@
             </div>
             <div id="calorieInput">
                 <label for="calories">Calories burned:</label>
-                <input type="number" name="calories" class="genericInput" id="calories" min="0">
+                <input type="number" name="calories" class="genericInputSession" id="calories" min="0">
                 <span class="sessionUnits">kcal</span>
             </div>
         </section>
@@ -100,22 +100,28 @@
         <button type="button" class="closeButton" id="sessionEntryPopupClose">X</button>
     </form>
     <div class="legEntryRow" id="legRow0">
-        <select class="typeInput genericInput" type="text" name="legType" id="legType">
-            <option value="Sprint">Sprint</option>
-            <option value="Jog">Jog</option>
-            <option value="Walk">Walk</option>
-            <option value="Rest">Rest</option>
-        </select>
-        <div class="timeInput">
-            <input type="number" name="legTimeM" class="legTimeM genericInput" min="0" placeholder="mm"> :
-            <input type="number" name="legTimeS" class="legTimeS genericInput" min="0" placeholder="ss">
+        <div class="legEntryRowMain">
+            <select class="typeInput genericInputLeg" type="text" name="legType" id="legType">
+                <option value="Sprint">Sprint</option>
+                <option value="Jog">Jog</option>
+                <option value="Walk">Walk</option>
+                <option value="Rest">Rest</option>
+            </select>
+            <div class="timeInput">
+                <input type="number" name="legTimeM" class="legTimeM genericInputLeg" min="0" placeholder="mm"> :
+                <input type="number" name="legTimeS" class="legTimeS genericInputLeg" min="0" placeholder="ss">
+            </div>
+            <input type="number" name="legSpeed" class="legSpeed genericInputLeg" required min="0" placeholder="0">
+            <span class="kmhUnits">km/h</span>
         </div>
-        <input type="number" name="legSpeed" class="legSpeed genericInput" required min="0" placeholder="0">
-        <span class="units">km/h</span>
-        <input type="number" name="legIncline" class="legIncline genericInput" step="0.1" min="-90" max="90" placeholder="--">
-        <span class="units">°</span>
-        <input type="number" name="legHeart" class="legHeart genericInput" placeholder="--">
-        <span class="units">bpm</span>
+        <div class="inclineContainer">
+            <input type="number" name="legIncline" class="legIncline genericInputLeg" step="0.1" min="-90" max="90" placeholder="Incline">
+            <span class="degreeUnits">°</span>
+        </div>
+        <div class="heartContainer">
+            <input type="number" name="legHeart" class="legHeart genericInputLeg" placeholder="Heartrate">
+            <span class="bpmUnits">bpm</span>
+        </div>
         <input type="button" name="legRowDelete" class="legRowDelete" value="X">
     </div>
     <section id="history">
@@ -124,11 +130,27 @@
                 <h2 id="historyName">Session Name</h2>
                 <div id="historyCategory">Category: Jog</div>
                 <div id="historyGraph"></div>
-                <div class="smallText">Added </div>
-                <div class="smallText">ID: </div>
+                <div id="historyDate" class="smallText">Added </div>
+                <div id="historyID" class="smallText">ID: </div>
+                <button type="button" id="deleteButton">Delete Session</button>
             </div>
             <div id="sessionHistoryRight">
-
+                <h3>Legs</h3>
+                <div id="historyLegs">
+                    <div class="historyRow" id="historyRow1">
+                        <div class="historyRowMain">
+                            <div class="historyType"></div>
+                            <div class="historySpeed"></div>
+                            <div id="historyUnitsContainer"><span class="historyUnits"> km/h</span></div>
+                            <div class="historyTime">
+                                <div class="historyTimeM"></div> : 
+                                <div class="historyTimeS"></div>
+                            </div>
+                        </div>
+                        <div class="historyExtra1"></div>
+                        <div class="historyExtra2"></div>
+                    </div>
+                </div>
             </div>
             <button type="button" class="backButton" id="backToFullHistory">&lt Show Full History</button>
         </div>

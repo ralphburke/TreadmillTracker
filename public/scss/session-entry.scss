@@ -1,4 +1,5 @@
 #sessionEntryPopup{
+    font-weight:bold;
     background-color:white;
     position:fixed;
     border-radius:20px;
@@ -24,6 +25,8 @@ h3{
 
 .genericInputSession{
     border:2px solid white;
+    font-size:30px;
+    font-weight:bold;
     border-bottom: 2px solid black;
     padding:0 10px;
     border-radius:10px;
@@ -37,7 +40,8 @@ h3{
 }
 
 .genericInputLeg{
-    font-size:18px;
+    font-size:23px;
+    font-weight:bold;
     border:none;
 
     &:focus{
@@ -86,6 +90,13 @@ h3{
 
 .legIncline{
     text-align:center;
+    width:84px;
+
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder
+
+    &::placeholder{
+        font-size:18px;
+    }
 }
 
 .inclineContainer{
@@ -97,6 +108,10 @@ h3{
 .legHeart{
     text-align:center;
     width:84px;
+
+    &::placeholder{
+        font-size:18px;
+    }
 }
 
 .heartContainer{
@@ -107,7 +122,6 @@ h3{
 
 .bpmUnits{
     font-size:12px;
-    font-weight:bold;
     position:relative;
     right:28px;
     top:-18px;
@@ -145,7 +159,7 @@ h3{
     display:flex;
     justify-content: space-between;
     margin-top:-20px;
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
 #tirednessRating{
@@ -171,7 +185,8 @@ h3{
     width:20px;
     height:20px;
     border-radius:50%;
-    border:5px solid black;
+    border:5px solid;
+    border-color:black;
     margin:0;
 }
 
@@ -180,8 +195,84 @@ h3{
     height:40px;
     margin-top:0;
     margin:0;
-    background-color: purple;
-    box-shadow: inset 0 0 0 10px white;
+    box-shadow: inset 0 0 0 5px white;
+}
+
+#tiredness1{
+    border-color:navy;
+    &:checked{
+        background-color:navy;
+    }
+}
+#tiredness2{
+    border-color:indigo;
+    &:checked{
+        background-color:indigo;
+    }
+}
+#tiredness3{
+    border-color:blueviolet;
+    &:checked{
+        background-color:blueviolet;
+    }
+}
+#tiredness4{
+    border-color:darkmagenta;
+    &:checked{
+        background-color:darkmagenta;
+    }
+}
+#tiredness5{
+    border-color:magenta;
+    &:checked{
+        background-color:magenta;
+    }
+}
+
+// // https://stackoverflow.com/a/24860437
+// .templateSave{
+//     appearance:none;
+//     width:160px;
+//     height:60px;
+//     background-color:aliceblue;
+//     margin-right:-20px;
+//     &:checked{
+//         background-color:magenta;
+//     }
+//     &:checked + label{
+//         color:white;
+//     }
+// }
+
+.templateSave{
+    width:50%;
+    height:45px;
+    background-color:white;
+    border:none;
+    font-size:25px;
+    font-weight:bold;
+
+    // https://www.w3schools.com/css/css_attribute_selectors.asp
+    &[data-checked="true"]{
+        background-color:magenta;
+        color:white;
+    }
+}
+
+#templateRadioBoundary{
+    width:320px;
+    border:5px solid black;
+    padding:5px 15px 0px 15px;
+    display:flex;
+    justify-content:space-evenly;
+    gap:5px;
+    padding:5px;
+}
+
+.templateRadioLabel{
+    position:relative;
+    bottom:21px;
+    right:115px;
 }
 
 #calorieInput{
@@ -211,7 +302,12 @@ h3{
 }
 
 #addSession{
-    font-size:20px;
+    font-size:40px;
+    font-weight:bold;
+    color:white;
+    background-color:magenta;
+    border:4px solid magenta;
+    box-shadow:0 0 0 4px inset white;
     padding:20px 50px;
     align-self:center;
     margin-top:20px;
@@ -224,16 +320,16 @@ h3{
 }
 
 h3{
-    // padding-left:15px;
     margin-top:60px;
-    font-size:30px;
+    font-size:40px;
     margin-bottom:5px;
 }
 
 #sessionForm{
-    padding:3em;
+    padding:40px 50px;
     width:80%;
-    line-height:300%;
+    line-height:200%;
+    font-size:25px;
 }
 
 .sessionDiv{
@@ -243,6 +339,7 @@ h3{
 
 #nameInput{
     font-size:45px;
+    font-weight:bold;
     margin-bottom:20px;
     width:100%;
     border:2px solid white;

@@ -58,13 +58,29 @@
                     <option class="templateOption" id="templateNone" value="None">None</option>
                 </select>
             </div>
-            <fieldset class="templateRadio">
+            <!-- <fieldset class="templateRadio">
                 <legend>Save this session as a new template?</legend>
                 <input type="radio" name="templateSave" id="templateYes" value=1>
                 <label for="templateYes">Yes</label>
                 <input type="radio" name="templateSave" id="templateNo" value=0 checked>
                 <label for="templateNo">No</label>
-            </fieldset>
+            </fieldset> -->
+            <!-- <div id="templateRadio">
+                <div>Save this session as a new template?</div>
+                <div id="templateRadioBoundary">
+                    <input type="radio" class="templateSave" name="templateSave" id="templateYes" value=1>
+                    <label class="templateRadioLabel" for="templateYes">Yes</label>
+                    <input type="radio" class="templateSave" name="templateSave" id="templateNo" value=0 checked>
+                    <label class="templateRadioLabel" for="templateNo">No</label>
+                </div>
+            </div> -->
+            <div id="templateRadio">
+                <div>Save this session as a new template?</div>
+                <div id="templateRadioBoundary">
+                    <button type="button" class="templateSave" name="templateSave" id="templateYes" value=1>Yes</button>
+                    <button type="button" class="templateSave" name="templateSave" id="templateNo" value=0 data-checked="true">No</button>
+                </div>
+            </div>
             <div id="tirednessRating">
                 <div class="tirednessDiv">
                     <input class="tiredness" type="radio" name="tiredness" id="tiredness1" value="1">

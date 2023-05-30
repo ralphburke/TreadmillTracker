@@ -345,3 +345,13 @@ document.getElementById("backToFullHistory").addEventListener("click", function(
     document.getElementById("fullHistory").style.visibility="visible";
     document.getElementById("sessionHistory").style.visibility="hidden";
 })
+
+document.getElementById("templateYes").addEventListener("click", event=>{
+    event.target.setAttribute("data-checked","true");
+    document.getElementById("templateNo").setAttribute("data-checked","false");
+})
+
+document.getElementById("templateNo").addEventListener("click", event=>{
+    event.target.setAttribute("data-checked","true");
+    document.getElementById("templateYes").setAttribute("data-checked","false");
+})

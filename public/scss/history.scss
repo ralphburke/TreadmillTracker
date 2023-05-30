@@ -1,0 +1,238 @@
+#showFullHistory{
+    text-decoration:underline;
+    &:hover{
+        cursor:pointer;
+    }
+    &:active{
+        color:rgb(255, 203, 219);
+    }
+}
+
+#history{
+    background-color:white;
+    position:fixed;
+    top:5%;
+    bottom:5%;
+    left:3%;
+    right:3%;
+    visibility:hidden;
+    border-radius:20px;
+    border:5px solid black;
+    box-shadow:0 0 0 10px white;
+}
+
+#historyTitle{
+    margin-top:-20px;
+    font-size:40px;
+    padding:20px 0 10px;
+    margin:0;
+}
+
+#fullHistory{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    margin:0 30px;
+}
+
+#historySessions{
+    align-self:center;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    overflow-y:scroll;
+    height:450px;
+
+    .pastSession{
+        border:3px solid black;
+        border-radius:0;
+        margin:12px;
+        line-height:5px;
+        width:325px;
+        padding:0px;
+        padding-bottom:20px;
+    
+        &:hover{
+            border-color:rgb(255, 203, 219);
+            cursor:pointer;
+        }
+        &:active{
+            background-color:rgb(255, 203, 219);
+        }
+    }
+
+    .sessionName{
+        margin-left:30px;
+        font-size:20px;
+        margin-bottom:0;
+    }
+
+    .graph{
+        margin-bottom:15px;
+    }
+
+    .pastSessionContent{
+        width:60%;
+    }
+
+    .stats{
+        display:flex;
+        justify-content:space-evenly;
+        font-size:15px;
+    }
+
+    .timeStat{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+    }
+}
+
+#sessionHistory{
+    display:grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap:50px;
+    visibility:hidden;
+    position:fixed;
+    margin:20px 80px;
+    line-height:240%;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#historyName{
+    font-size:40px;
+    margin-top:50px;
+    margin-bottom:10px;
+    color:black;
+}
+
+#historyCategory{
+    font-size:30px;
+    margin-bottom:30px;
+}
+
+#historyGraph{
+    width:100%;
+    margin-bottom:20px;
+
+    .graph{
+        margin-bottom:0;
+        margin-left:0;
+    }
+
+    .stats{
+        display:flex;
+        justify-content:space-evenly;
+        font-size:20px;
+    }
+
+    .timeStat{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:nowrap;
+    }
+}
+
+.backButton{
+    position:absolute;
+    top:0;
+    left:-60px;
+    font-size:15px;
+    border:none;
+    background:none;
+    text-decoration:underline;
+
+    &:hover{
+        cursor:pointer;
+    }
+
+    &:active{
+        color:grey;
+    }
+}
+
+.historyRow{
+    // display:flex;
+    // flex-direction:row;
+    // flex-wrap:nowrap;
+    // justify-content:space-around;
+
+    display:grid;
+    grid-template-columns:4fr 1fr 1fr;
+    gap:0;
+}
+
+.historyRowMain{
+    display:grid;
+    grid-template-columns:1fr 0.5fr 1fr 1fr;
+    // width:60%;
+    border:6px solid black;
+    padding:0 15px;
+}
+
+.historyType{
+    text-align:left;
+}
+
+.historySpeed{
+    text-align:right;
+}
+
+.historyUnits{
+    font-size:17px;
+    padding-left:3px;
+}
+
+.historyTime{
+    display:flex;
+    flex-direction:row;
+    justify-content:end;
+}
+
+.historyExtra1, .historyExtra2{
+    border:6px solid transparent;
+    // width:20%;
+    text-align:center;
+}
+
+#historyIncline{
+    border-color:rgb(87, 87, 224);
+    color:rgb(87, 87, 224);
+}
+
+#historyHeart{
+    border-color:rgb(249, 85, 112);
+    color:rgb(249, 85, 112);
+}
+
+#historyLegs{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    height:400px;
+    overflow-y:auto;
+}
+
+.smallText{
+    font-size:12px;
+    height:30px;
+}
+
+#deleteButton{
+    border:10px solid white;
+    background-color:black;
+    color:white;
+    border-style: double;
+    font-size:20px;
+    padding:10px 20px;
+    margin-top:30px;
+
+    &:hover{
+        cursor:pointer;
+    }
+    &:active{
+        background-color:red;
+    }
+}

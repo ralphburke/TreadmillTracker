@@ -40,9 +40,9 @@ function addLegRow(){
 }
 
 function legGrey(typeSelect){
-    let legRow=typeSelect.parentNode;
-    let speed=legRow.children[2];
-    let incline=legRow.children[4];
+    let legRow=typeSelect.parentNode.parentNode;
+    let speed=legRow.querySelector(".legSpeed");
+    let incline=legRow.querySelector(".legIncline");
     if(typeSelect.value=="Rest"){
         speed.value=null;
         incline.value=null;
@@ -88,6 +88,7 @@ let session={
     totalSpeed:0,
     totalTime:0
 }
+
 sessionList.push(session);
 saveSessions();
 
@@ -102,6 +103,9 @@ if(document.getElementById("templateYes").checked==1){
     templateList.push(template);
     saveTemplates();
 }
+
+closeSessionEntry();
+moveFromHistory();
 sessionReset();
 pastSessionConstruct(sessionList[sessionList.length-1]);
 }
@@ -200,6 +204,8 @@ function pastSessionConstruct(session){
     constructGraph(session, pastSessionCopy.querySelector(".graph"));
     pastSessionCopy.querySelector(".distanceStat").innerHTML=((session.totalTime/3600)*session.totalSpeed/session.legs.length).toFixed(2)+"<span class=\"sessionUnits\"> km</span>";
     pastSessionCopy.querySelector(".timeStatM").innerText=Math.floor(session.totalTime/60);
+
+    // https://stackoverflow.com/a/8043061
     pastSessionCopy.querySelector(".timeStatS").innerText=(session.totalTime%60).toLocaleString("en-AU", {minimumIntegerDigits:2});
     if(session.calories!==""){pastSessionCopy.querySelector(".calorieStat").innerHTML=session.calories+"<span class=\"sessionUnits\"> kcal</span>"}else{
         pastSessionCopy.querySelector(".calorieStat").remove();
@@ -275,6 +281,8 @@ function newHistoryRows(session){
         newRow.querySelector(".historyType").innerText=leg.type;
         newRow.querySelector(".historySpeed").innerHTML=leg.speed;
         newRow.querySelector(".historyTimeM").innerText=Math.floor(leg.time/60);
+        
+        // https://stackoverflow.com/a/8043061
         newRow.querySelector(".historyTimeS").innerText=(leg.time%60).toLocaleString("en-AU", {minimumIntegerDigits:2});
         newRow.id="historyRow"+historyID;
         historyID+=1;

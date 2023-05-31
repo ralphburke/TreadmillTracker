@@ -17,13 +17,13 @@
     </header>
     <div id="centreButton">
         <button type="button" id="sessionEntryPopupOpen">
-            + New Session
+            + New session
         </button>
     </div>
     <section id="sessionsRow">
         <div id="sessionsRowLabel">
             <div id="pastSessions">Past sessions</div>
-            <div id="showFullHistory">Show full history</div>
+            <div id="showFullHistory">Show all</div>
         </div>
         <div class="pastSession" id="pastSession0">
             <div class="pastSessionContent">
@@ -38,6 +38,7 @@
                     <div class="calorieStat"></div>
                 </div>
             </div>
+            <!-- <img src="./images/Webapp Background.png"> -->
         </div>
     </section>
     <form id="sessionEntryPopup">
@@ -58,22 +59,6 @@
                     <option class="templateOption" id="templateNone" value="None">None</option>
                 </select>
             </div>
-            <!-- <fieldset class="templateRadio">
-                <legend>Save this session as a new template?</legend>
-                <input type="radio" name="templateSave" id="templateYes" value=1>
-                <label for="templateYes">Yes</label>
-                <input type="radio" name="templateSave" id="templateNo" value=0 checked>
-                <label for="templateNo">No</label>
-            </fieldset> -->
-            <!-- <div id="templateRadio">
-                <div>Save this session as a new template?</div>
-                <div id="templateRadioBoundary">
-                    <input type="radio" class="templateSave" name="templateSave" id="templateYes" value=1>
-                    <label class="templateRadioLabel" for="templateYes">Yes</label>
-                    <input type="radio" class="templateSave" name="templateSave" id="templateNo" value=0 checked>
-                    <label class="templateRadioLabel" for="templateNo">No</label>
-                </div>
-            </div> -->
             <div id="templateRadio">
                 <div>Save this session as a new template?</div>
                 <div id="templateRadioBoundary">
@@ -111,11 +96,15 @@
         <section id="legsContainer">
             <h3>Legs</h3>
             <div id="legForm">
-                <input type="button" value="+" id="addLegButton">
+                <button type="button" id="addLegButton">
+                    <img src="./images/Webapp + button.png" alt="+ add leg row">
+                </button>
             </div>
-            <button type="submit" id="addSession">Add Session</button>
+            <button type="submit" id="addSession">Create Session</button>
         </section>
-        <button type="button" class="closeButton" id="sessionEntryPopupClose">X</button>
+        <button type="button" class="closeButton" id="sessionEntryPopupClose">
+            <img src="./images/Webapp X Button.png" alt="X close page">
+        </button>
     </form>
     <div class="legEntryRow" id="legRow0">
         <div class="legEntryRowMain">
@@ -140,7 +129,9 @@
             <input type="number" name="legHeart" class="legHeart genericInputLeg" placeholder="Heartrate">
             <span class="bpmUnits">bpm</span>
         </div>
-        <input type="button" name="legRowDelete" class="legRowDelete" value="X">
+        <button type="button" class="legRowDelete">
+            <img src="./images/Webapp X Button.png" alt="X close page">
+        </button>
     </div>
     <section id="history">
         <div id="sessionHistory">
@@ -177,7 +168,9 @@
             <section id="historySessions">
             </section>
         </div>
-        <button type="button" class="closeButton" id="historyPopupClose">X</button>
+        <button type="button" class="closeButton" id="historyPopupClose">
+            <img src="./images/Webapp X Button.png" alt="X">
+        </button>
     </section>
 <script src="script.js"></script>
 </body>

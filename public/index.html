@@ -61,7 +61,7 @@
                 <button type="button" id="manageTemplates">Manage<br>templates</button>
             </div>
             <div id="templateRadio">
-                <div>Save this session as a new template?</div>
+                <div id="templateRadioLabel">Save this session as a new template?</div>
                 <div id="templateRadioBoundary">
                     <button type="button" class="templateSave" name="templateSave" id="templateYes" value=1>Yes</button>
                     <button type="button" class="templateSave" name="templateSave" id="templateNo" value=0 data-checked="true">No</button>
@@ -116,7 +116,7 @@
                 <option value="Rest">Rest</option>
             </select>
             <div class="timeInput">
-                <input type="number" name="legTimeM" class="legTimeM genericInputLeg" min="0" placeholder="mm"> :
+                <input type="number" name="legTimeM" class="legTimeM genericInputLeg" min="0" placeholder="mm"> <span>:</span>
                 <input type="number" name="legTimeS" class="legTimeS genericInputLeg" min="0" placeholder="ss">
             </div>
             <input type="number" name="legSpeed" class="legSpeed genericInputLeg" required min="0" placeholder="0">

@@ -167,9 +167,11 @@ h1{
 }
 
 @media only screen and (max-width:800){
+    
     header{
         top:60px;
     }
+
     h1{
         font-size:110px;
         white-space:pre-wrap;
@@ -178,6 +180,7 @@ h1{
             font-size:0;
         }
     }
+
     #centreButton{
         position:fixed;
         display:flex;
@@ -185,12 +188,14 @@ h1{
         width:100%;
         top:530px;
     }
+
     #sessionEntryPopupOpen{
         padding:50px 80px 50px 70px;
         font-size:70px;
         border-radius:50px;
         border:5px solid white;
     }
+
     #sessionsRow{
         height:300px;
         bottom:50px;
@@ -214,6 +219,7 @@ h1{
             margin-right:-50px;
         }
     }
+
     #sessionsRowLabel{
         bottom:380px;
         left:0;
@@ -224,6 +230,7 @@ h1{
         margin:0 65px;
         font-size:40px;
     }
+
     #showFullHistory{
         font-size:30px;
     }

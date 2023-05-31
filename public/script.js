@@ -175,7 +175,9 @@ document.getElementById("sessionTemplate").addEventListener("change", event=>{
         document.getElementById("nameInput").value=template.name;
         document.getElementById("sessionCategory").value=template.category;
         document.getElementById("calories").value=template.calories;
-        document.getElementById("tiredness"+template.tiredness).checked=true;
+        if(template.tiredness!==undefined){
+            document.getElementById("tiredness"+template.tiredness).checked=true;
+        }
         template.legs.forEach(leg=>{
             allRows=document.getElementById("legForm").children;
             let row=allRows[allRows.length-2];
@@ -395,7 +397,8 @@ function writeTemplates(){
             saveTemplates();
             writeTemplates();
         })
-        templateDelete.innerText="Delete template";
+        // templateDelete.innerText="Delete template";
+        templateDelete.innerHTML="Delete<span> template</span>"
         templateRow.appendChild(templateNew);
         templateRow.appendChild(templateDelete);
         document.getElementById("templatesDiv").appendChild(templateRow);

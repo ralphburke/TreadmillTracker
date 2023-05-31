@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <h1>TREADMILL TRACKER</h1>
+        <h1>TREADMILL<span> </span>TRACKER</h1>
     </header>
     <div id="centreButton">
         <button type="button" id="sessionEntryPopupOpen">
@@ -27,9 +27,9 @@
         </div>
         <div class="pastSession" id="pastSession0">
             <div class="pastSessionContent">
-                <h4 class="sessionName"></h4>
+                <h4 class="sessionName textOutline"></h4>
                 <div class="graph" id="thePastSessionGraph"></div>
-                <div class="stats">
+                <div class="stats textOutline">
                     <div class="distanceStat"></div>
                     <div class="timeStat">
                         <div class="timeStatM"></div> : 
@@ -58,6 +58,7 @@
                 <select type="text" name="template" id="sessionTemplate" class="genericInputSession">
                     <option class="templateOption" id="templateNone" value="None">None</option>
                 </select>
+                <button type="button" id="manageTemplates">Manage<br>templates</button>
             </div>
             <div id="templateRadio">
                 <div>Save this session as a new template?</div>
@@ -130,15 +131,31 @@
             <span class="bpmUnits">bpm</span>
         </div>
         <button type="button" class="legRowDelete">
-            <img src="./images/Webapp X Button.png" alt="X close page">
+            <img src="./images/Webapp X Button.png" alt="X delete row">
         </button>
     </div>
+    <section id="manageTemplatesPopup">
+        <div id="templatesHeading">
+            <h2>Templates</h2>
+        </div>
+        <ul id="templatesDiv"></ul>
+        <button type="button" class="closeButton" id="manageTemplatesPopupClose">
+            <img src="./images/Webapp X Button.png" alt="X close page">
+        </button>
+    </section>
     <section id="history">
         <div id="sessionHistory">
             <div id="sessionHistoryLeft">
                 <h2 id="historyName">Session Name</h2>
                 <div id="historyCategory">Category: Jog</div>
                 <div id="historyGraph"></div>
+                <div id="historyTiredness">
+                    <div id="historyTiredness1"></div>
+                    <div id="historyTiredness2" data-checked="true"></div>
+                    <div id="historyTiredness3"></div>
+                    <div id="historyTiredness4"></div>
+                    <div id="historyTiredness5"></div>
+                </div>
                 <div id="historyDate" class="smallText">Added </div>
                 <div id="historyID" class="smallText">ID: </div>
                 <button type="button" id="deleteButton">Delete Session</button>
@@ -161,7 +178,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="backButton" id="backToFullHistory">&lt Show Full History</button>
+            <button type="button" class="backButton" id="backToFullHistory">⇦ Show Full History</button>
         </div>
         <div id="fullHistory">
             <h2 id="historyName">History</h2>
@@ -169,7 +186,7 @@
             </section>
         </div>
         <button type="button" class="closeButton" id="historyPopupClose">
-            <img src="./images/Webapp X Button.png" alt="X">
+            <img src="./images/Webapp X Button.png" alt="X close page">
         </button>
     </section>
 <script src="script.js"></script>

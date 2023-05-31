@@ -117,6 +117,8 @@ function sessionReset(){
         if(element.id!=="legRow0"){element.remove()}}
     )
     addLegRow();
+    document.getElementById("templateYes").setAttribute("data-checked","false");
+    document.getElementById("templateNo").setAttribute("data-checked","true");
 }
 
 function addLeg(element){
@@ -364,3 +366,38 @@ document.getElementById("templateNo").addEventListener("click", event=>{
     event.target.setAttribute("data-checked","true");
     document.getElementById("templateYes").setAttribute("data-checked","false");
 })
+
+document.getElementById("manageTemplates").addEventListener("click", function(){
+    resetTemplates();
+    writeTemplates();
+    document.getElementById("sessionEntryPopup").style.visibility="hidden";
+    document.getElementById("manageTemplatesPopup").style.visibility="visible";
+})
+
+document.getElementById("manageTemplatesPopupClose").addEventListener("click", function(){
+    document.getElementById("sessionEntryPopup").style.visibility="visible";
+    document.getElementById("manageTemplatesPopup").style.visibility="hidden";
+    listTemplates();
+})
+
+function writeTemplates(){
+    document.getElementById("templatesDiv").innerHTML="";
+    templateList.forEach(template=>{
+        let templateRow=document.createElement("li");
+        templateRow.setAttribute("class", "templateRow");
+        let templateNew=document.createElement("div");
+        templateNew.innerText=template.name;
+        let templateDelete=document.createElement("button");
+        templateDelete.setAttribute("type", "button");
+        templateDelete.setAttribute("data-index", templateList.indexOf(template));
+        templateDelete.addEventListener("click", event=>{
+            templateList.splice(event.target.getAttribute("data-index"),1)
+            saveTemplates();
+            writeTemplates();
+        })
+        templateDelete.innerText="Delete template";
+        templateRow.appendChild(templateNew);
+        templateRow.appendChild(templateDelete);
+        document.getElementById("templatesDiv").appendChild(templateRow);
+    })
+}

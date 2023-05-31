@@ -2,12 +2,12 @@ body{
     white-space:nowrap;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overscroll-behavior-x:none;
-    background-image:url("../images/sven-mieke-MsCgmHuirDo-unsplash.jpg");
-    background-size:150%;
-    background-position:-320px -100px;
+    background-image:url("../images/Webapp Background.png");
+    background-size:100%;
+    background-position:0px 0px;
     background-attachment:fixed;
 }
 
-@import 'main-page';
+@import 'landing';
 @import 'session-entry';
 @import 'history';

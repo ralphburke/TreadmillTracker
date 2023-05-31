@@ -45,25 +45,28 @@
     height:450px;
 
     .pastSession{
-        border:3px solid black;
+        border:4px solid black;
         border-radius:0;
         margin:12px;
         line-height:5px;
         width:325px;
         padding:0px;
         padding-bottom:20px;
+        background-position:70px -1px;
+        background-size:82.5%;
+        background-repeat:no-repeat;
     
         &:hover{
             border-color:rgb(255, 203, 219);
             cursor:pointer;
         }
         &:active{
-            background-color:rgb(255, 203, 219);
+            background-color:rgb(255, 242, 245);
         }
     }
 
     .sessionName{
-        margin-left:30px;
+        margin-left:16px;
         font-size:20px;
         margin-bottom:0;
     }
@@ -80,6 +83,7 @@
         display:flex;
         justify-content:space-evenly;
         font-size:15px;
+        font-weight:bold;
     }
 
     .timeStat{
@@ -91,31 +95,31 @@
 
 #sessionHistory{
     display:grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
     column-gap:50px;
     visibility:hidden;
     position:fixed;
-    margin:20px 80px;
+    margin:10px 50px;
     line-height:240%;
-    font-size:20px;
+    font-size:25px;
     font-weight:bold;
 }
 
 #historyName{
-    font-size:40px;
+    font-size:60px;
     margin-top:50px;
     margin-bottom:10px;
     color:black;
 }
 
 #historyCategory{
-    font-size:30px;
+    font-size:35px;
     margin-bottom:30px;
 }
 
 #historyGraph{
     width:100%;
-    margin-bottom:20px;
+    margin-bottom:0px;
 
     .graph{
         margin-bottom:0;
@@ -124,8 +128,9 @@
 
     .stats{
         display:flex;
-        justify-content:space-evenly;
-        font-size:20px;
+        justify-content:space-around;
+        font-size:30px;
+        margin-left:-20px;
     }
 
     .timeStat{
@@ -137,9 +142,10 @@
 
 .backButton{
     position:absolute;
-    top:0;
-    left:-60px;
-    font-size:15px;
+    top:10px;
+    left:-30px;
+    font-size:18px;
+    font-weight:bold;
     border:none;
     background:none;
     text-decoration:underline;
@@ -181,7 +187,7 @@
 }
 
 .historyUnits{
-    font-size:17px;
+    font-size:20px;
     padding-left:3px;
 }
 
@@ -198,13 +204,13 @@
 }
 
 #historyIncline{
-    border-color:rgb(87, 87, 224);
-    color:rgb(87, 87, 224);
+    border-color:rgb(116, 119, 179);
+    color:rgb(116, 119, 179);
 }
 
 #historyHeart{
-    border-color:rgb(249, 85, 112);
-    color:rgb(249, 85, 112);
+    border-color:rgb(204, 104, 134);
+    color:rgb(204, 104, 134);
 }
 
 #historyLegs{
@@ -216,23 +222,25 @@
 }
 
 .smallText{
-    font-size:12px;
+    margin-bottom:12px;
+    font-size:18px;
     height:30px;
 }
 
 #deleteButton{
-    border:10px solid white;
+    border:5px solid black;
     background-color:black;
+    box-shadow:0 0 0 3px inset white;
     color:white;
-    border-style: double;
     font-size:20px;
-    padding:10px 20px;
+    padding:15px 35px;
     margin-top:30px;
 
     &:hover{
         cursor:pointer;
     }
     &:active{
-        background-color:red;
+        background-color:rgb(204, 104, 134);
+        border:5px solid rgb(204, 104, 134);
     }
 }

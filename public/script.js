@@ -35,7 +35,7 @@ function addLegRow(){
         legGrey(event.target);
     })
     document.getElementsByClassName("legRowDelete")[rowNum-1].addEventListener("click", event=>{
-        event.target.parentNode.remove();
+        event.target.closest(".legEntryRow").remove();
     })
 }
 
@@ -71,10 +71,10 @@ let tiredness=undefined;
 document.getElementsByName("tiredness").forEach(element=>{if(element.checked==true){tiredness=element.value}});
 
 let category=document.getElementById("sessionCategory").value;
-if(category=="Sprints"){image=""}else{
-if(category=="Jog"){image=""}else{
-if(category=="Endurance"){image=""}else{
-if(category=="Walk"){image=""}}}}
+if(category=="Sprints"){image="url('Webapp Sprint.13fa4a76.png')"}else{
+if(category=="Jog"){image="url('Webapp Jog.251f5d69.png')"}else{
+if(category=="Endurance"){image="url('Webapp Endurance.e2670ce3.png')"}else{
+if(category=="Walk"){image="url('Webapp Walk.2db0cc85.png')"}}}}
 
 let session={
     name: document.getElementById("nameInput").value,
@@ -92,7 +92,7 @@ let session={
 sessionList.push(session);
 saveSessions();
 
-if(document.getElementById("templateYes").checked==1){
+if(document.getElementById("templateYes").getAttribute("data-checked")=="true"){
     let template={
         name: document.getElementById("nameInput").value,
         category,
@@ -216,6 +216,9 @@ function pastSessionConstruct(session){
         document.getElementById("deleteButton").setAttribute("data-sessionIndex", index);
         viewSession(pastSession, sessionList[index])
     });
+
+    // https://www.w3schools.com/jsref/prop_style_backgroundimage.asp
+    pastSessionCopy.style.backgroundImage=session.image;
     document.getElementById("sessionsRow").appendChild(pastSessionCopy);
 }
 
@@ -243,6 +246,12 @@ function constructGraph(session, graphLocation){
     graphLocation.querySelectorAll(".bar").forEach(bar=>{
         bar.style.width=(graphWidth*bar.getAttribute("data-time")/session.totalTime)+"px";
         bar.style.height=(graphHeight*bar.getAttribute("data-speed")/maxSpeed)+"px";
+        if(bar.getAttribute("data-speed")=="0"){
+            bar.style.height=graphHeight+"px";
+            bar.style.border="0px";
+            bar.style.borderBottom="2px solid black";
+            bar.style.backgroundColor="transparent";
+        };
     })
 }
 
@@ -266,7 +275,7 @@ function viewSession(pastSession, session){
 
 function enlargeGraph(graphLocation){
     graphLocation.querySelectorAll(".bar").forEach(bar=>{
-        bar.style.width=(0.7*bar.style.width.slice(0,-2))+"px";
+        bar.style.width=(1.1*bar.style.width.slice(0,-2))+"px";
         bar.style.height=(2*bar.style.height.slice(0,-2))+"px";
     })
 }

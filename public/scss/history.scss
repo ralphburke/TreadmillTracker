@@ -19,6 +19,10 @@
     margin:0 30px;
 }
 
+#historyTitle{
+    font-size:40px;
+}
+
 #historySessions{
     align-self:center;
     display:flex;
@@ -89,7 +93,7 @@
     font-weight:bold;
 }
 
-#historyName, #historyTitle{
+#historyName{
     font-size:60px;
     margin-top:50px;
     margin-bottom:10px;
@@ -183,7 +187,7 @@
     width:215px;
     margin-top:30px;
 
-    &[data-status="black"]{
+    &[data-status="delete"]{
         border-color:black;
         background-color:black;
         #deleteSession{
@@ -196,7 +200,7 @@
         }
     }
 
-    &[data-status="red"]{
+    &[data-status="confirm"]{
         border-color:rgb(204, 104, 134);
         background-color:rgb(204, 104, 134);
         #deleteSession{

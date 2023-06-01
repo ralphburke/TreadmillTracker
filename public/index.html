@@ -158,7 +158,11 @@
                 </div>
                 <div id="historyDate" class="smallText">Added </div>
                 <div id="historyID" class="smallText">ID: </div>
-                <button type="button" id="deleteButton">Delete Session</button>
+                <button type="button" id="cancelDelete">Cancel</button>
+                <button type="button" id="deleteButton" data-status="black">
+                    <span id="deleteSession">Delete Session</span>
+                    <span id="confirmDelete">Confirm Delete</span>
+                </button>
             </div>
             <div id="sessionHistoryRight">
                 <h3>Legs</h3>

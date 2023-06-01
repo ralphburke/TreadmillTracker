@@ -33,6 +33,7 @@
         margin:12px;
         line-height:5px;
         width:325px;
+        height:135px;
         padding:0px;
         padding-bottom:20px;
         background-position:70px -1px;
@@ -173,18 +174,53 @@
 }
 
 #deleteButton{
-    border:5px solid black;
-    background-color:black;
+    border-width:5px;
+    border-style:solid;
     box-shadow:0 0 0 3px inset white;
     color:white;
     font-size:20px;
-    padding:15px 35px;
+    padding:15px;
+    width:215px;
     margin-top:30px;
 
-    &:active{
-        background-color:rgb(204, 104, 134);
-        border:5px solid rgb(204, 104, 134);
+    &[data-status="black"]{
+        border-color:black;
+        background-color:black;
+        #deleteSession{
+            visibility:inherit;
+            position:unset;
+        }
+        #confirmDelete{
+            visibility:hidden;
+            position:absolute;
+        }
     }
+
+    &[data-status="red"]{
+        border-color:rgb(204, 104, 134);
+        background-color:rgb(204, 104, 134);
+        #deleteSession{
+            visibility:hidden;
+            position:absolute;
+        }
+        #confirmDelete{
+            visibility:inherit;
+            position:unset;
+        }
+    }
+}
+
+#cancelDelete{
+    border:5px solid rgb(88, 88, 88);
+    background-color:rgb(88, 88, 88);
+    box-shadow:0 0 0 3px inset white;
+    color:white;
+    font-size:20px;
+    padding:15px;
+    width:215px;
+    margin-top:30px;
+    position:absolute;
+    visibility:hidden;
 }
 
 .backButton{

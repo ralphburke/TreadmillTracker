@@ -321,14 +321,31 @@ function newHistoryRows(session){
     })
 }
 
+// https://www.digitalocean.com/community/tutorials/css-inherit-initial-unset
 document.getElementById("deleteButton").addEventListener("click", function(){
-    let sessionIndex=document.getElementById("deleteButton").getAttribute("data-sessionIndex");
-    sessionList.splice(sessionIndex, 1);
-    saveSessions();
-    moveFromHistory();
-    writeSessions();
-    document.getElementById("history").style.visibility="hidden";
-    document.getElementById("sessionHistory").style.visibility="hidden";
+    let deleteButton=document.getElementById("deleteButton");
+    if(deleteButton.getAttribute("data-status")=="black"){
+        deleteButton.setAttribute("data-status","red");
+        document.getElementById("cancelDelete").style.position="unset";
+        document.getElementById("cancelDelete").style.visibility="inherit";
+    }else{
+        deleteButton.setAttribute("data-status", "black");
+        let sessionIndex=document.getElementById("deleteButton").getAttribute("data-sessionIndex");
+        sessionList.splice(sessionIndex, 1);
+        saveSessions();
+        moveFromHistory();
+        writeSessions();
+        document.getElementById("cancelDelete").style.visibility="hidden";
+        document.getElementById("cancelDelete").style.position="absolute";
+        document.getElementById("history").style.visibility="hidden";
+        document.getElementById("sessionHistory").style.visibility="hidden";
+    }
+})
+
+document.getElementById("cancelDelete").addEventListener("click", function(){
+    document.getElementById("deleteButton").setAttribute("data-status", "black");
+    document.getElementById("cancelDelete").style.visibility="hidden";
+    document.getElementById("cancelDelete").style.position="absolute";
 })
 
 document.getElementById("showFullHistory").addEventListener("click", function(){

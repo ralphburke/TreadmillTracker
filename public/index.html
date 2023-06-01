@@ -43,10 +43,10 @@
     </section>
     <form id="sessionEntryPopup">
         <section id="sessionForm">
-            <input id="nameInput" placeholder="Session Name" required>
+            <input id="nameInput" name="nameInput" placeholder="Session Name" required>
             <div class="sessionDiv">
                 <label for="sessionCategory">Category</label>
-                <select type="text" name="category" id="sessionCategory" class="genericInputSession">
+                <select type="text" name="sessionCategory" id="sessionCategory" class="genericInputSession">
                     <option value="Sprints">Sprints</option>
                     <option value="Jog">Jog</option>
                     <option value="Endurance">Endurance</option>
@@ -55,7 +55,7 @@
             </div>
             <div class="sessionDiv">
                 <label for="sessionTemplate">Template</label>
-                <select type="text" name="template" id="sessionTemplate" class="genericInputSession">
+                <select type="text" name="sessionTemplate" id="sessionTemplate" class="genericInputSession">
                     <option class="templateOption" id="templateNone" value="None">None</option>
                 </select>
                 <button type="button" id="manageTemplates">Manage<br>templates</button>
@@ -178,10 +178,10 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="backButton" id="backToFullHistory">⇦ Show Full History</button>
+            <button type="button" class="backButton" id="backToFullHistory">🡄<span> Show Full History</span></button>
         </div>
         <div id="fullHistory">
-            <h2 id="historyName">History</h2>
+            <h2 id="historyTitle">History</h2>
             <section id="historySessions">
             </section>
         </div>

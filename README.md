@@ -8,6 +8,8 @@ Mobile: 750 x 1334
 ### Required installations
 Node.js, which can be installed from https://nodejs.org/en
 
+Express, which can be installed using the command `npm install express`
+
 Parcel, which can be installed using the command `npm install --save-dev parcel`
 
 Sass, which can be installed using the command `npm install sass`

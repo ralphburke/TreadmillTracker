@@ -50,6 +50,7 @@ function addLegRow(){
         legGrey(event.target);
     })
     document.getElementsByClassName("legRowDelete")[rowNum-1].addEventListener("click", event=>{
+        // Finds the nearest leg row ancestor using .closest(). I learned this method from this post: https://stackoverflow.com/a/27037567
         event.target.closest(".legEntryRow").remove();
     })
 }
@@ -391,9 +392,8 @@ document.getElementById("deleteButton").addEventListener("click", function(){
     if(deleteButton.getAttribute("data-status")=="delete"){
         // Clickling delete changes its class, switching out spans to ask for confirmation
         deleteButton.setAttribute("data-status","confirm");
-        /* Using inherit instead of visible ensures the button will not be visible when the page is hidden.
-        Also unset is an easy way to revert to default settings. I got these methods from here: https://www.digitalocean.com/community/tutorials/css-inherit-initial-unset */
-        document.getElementById("cancelDelete").style.position="unset";
+        // Using inherit instead of visible ensures the button will not be visible when the page is hidden. I got this from here: https://www.digitalocean.com/community/tutorials/css-inherit-initial-unset
+        document.getElementById("cancelDelete").style.position="relative";
         document.getElementById("cancelDelete").style.visibility="inherit";
     }else{
         // If confirmation is given...

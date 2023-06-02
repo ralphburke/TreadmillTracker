@@ -415,12 +415,22 @@
         top:400px;
         border-width:8px;
         box-shadow:0 0 0 5px inset white;
-        font-size:35px;
-        padding:18px 30px;
+        font-size:32px;
+        padding:18px;
+        width:280px;
     
         &:active{
             border-width:8px;
         }
+    }
+    
+    #cancelDelete{
+        border-width:8px;
+        box-shadow:0 0 0 5px inset white;
+        font-size:32px;
+        padding:18px;
+        width:280px;
+        top:400px;
     }
     
     .backButton{

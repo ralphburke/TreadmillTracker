@@ -40,6 +40,18 @@
         height:135px;
         padding:0px;
         padding-bottom:20px;
+        &[data-image="Sprints"]{
+            background-image:url("../images/Webapp Sprint.png");
+        }
+        &[data-image="Jog"]{
+            background-image:url("../images/Webapp Jog.png");
+        }
+        &[data-image="Endurance"]{
+            background-image:url("../images/Webapp Endurance.png");
+        }
+        &[data-image="Walk"]{
+            background-image:url("../images/Webapp Walk.png");
+        }
         background-position:70px -1px;
         background-size:82.5%;
         background-repeat:no-repeat;

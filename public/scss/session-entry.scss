@@ -13,6 +13,7 @@
     column-gap:0;
     grid-template-columns:1fr 1fr;
     visibility:hidden;
+    // Removes the arrow buttons from number inputs. I got this from this post: https://stackoverflow.com/a/4298216
     ::-webkit-inner-spin-button {
         appearance:none;
     }
@@ -102,7 +103,7 @@ option{
     text-align:center;
     width:84px;
 
-    // https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder
+    // I found out how to target placeholder text from here: https://developer.mozilla.org/en-US/docs/Web/CSS/::placeholder
 
     &::placeholder{
         font-size:18px;
@@ -184,9 +185,7 @@ option{
     justify-content:center;
 }
 
-
-// https://moderncss.dev/pure-css-custom-styled-radio-buttons/
-
+// I followed this guide on styling radio inputs: https://moderncss.dev/pure-css-custom-styled-radio-buttons/
 .tiredness{
     appearance:none;
     width:30px;
@@ -244,7 +243,7 @@ option{
     font-size:25px;
     font-weight:bold;
 
-    // https://www.w3schools.com/css/css_attribute_selectors.asp
+    // I used this article for targeting attributes: https://www.w3schools.com/css/css_attribute_selectors.asp
     &[data-checked="true"]{
         background-color:rgb(204, 104, 134);
         color:white;
@@ -377,7 +376,7 @@ h3{
     padding:0 10px;
     color:white;
 
-    // https://stackoverflow.com/a/49658476
+    // I followed advice from this post on aligning items: https://stackoverflow.com/a/49658476
     margin-left:auto;
 }
 
@@ -605,7 +604,7 @@ h3{
         align-items:center;
         gap:10px;
         padding:0 0 0 10px;
-        height:310px
+        height:300px
     }
 
     .legRowDelete{

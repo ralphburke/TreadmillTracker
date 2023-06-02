@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- https://stackoverflow.com/a/45530211 -->
+    <!-- I used minimum-scale=1 in the meta tag to prevent the application automatically zooming out
+        I learned this from this post https://stackoverflow.com/a/45530211 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
     <title>Document</title>
     <link href="scss/main.scss" rel="stylesheet">
@@ -25,6 +25,7 @@
             <div id="pastSessions">Past sessions</div>
             <div id="showFullHistory">Show all</div>
         </div>
+        <!-- pastSession0 is the template element all .pastSession elements are copied from -->
         <div class="pastSession" id="pastSession0">
             <div class="pastSessionContent">
                 <h4 class="sessionName textOutline"></h4>
@@ -106,6 +107,7 @@
             <img src="./images/Webapp X Button.png" alt="X close page">
         </button>
     </form>
+    <!-- legRow0 is the template leg row -->
     <div class="legEntryRow" id="legRow0">
         <div class="legEntryRowMain">
             <select class="typeInput genericInputLeg" type="text" name="legType" id="legType">
@@ -118,7 +120,7 @@
                 <input type="number" name="legTimeM" class="legTimeM genericInputLeg" min="0" placeholder="mm"> <span>:</span>
                 <input type="number" name="legTimeS" class="legTimeS genericInputLeg" min="0" placeholder="ss">
             </div>
-            <input type="number" name="legSpeed" class="legSpeed genericInputLeg" required min="0" placeholder="0">
+            <input type="number" name="legSpeed" class="legSpeed genericInputLeg" required placeholder="0">
             <span class="kmhUnits">km/h</span>
         </div>
         <div class="inclineContainer">
@@ -194,5 +196,4 @@
     </section>
 <script src="script.js"></script>
 </body>
-
 </html>

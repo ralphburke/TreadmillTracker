@@ -325,6 +325,7 @@
             margin:20px;
             line-height:20px;
             width:560px;
+            height:180px;
             padding-bottom:30px;
             background-position:215px -1px;
             background-size:64.5%;
@@ -371,16 +372,17 @@
     }
     
     #historyGraph{
-        scale:1.1;
+        scale:1.2;
         margin-bottom:0px;
-        margin-left:30px;
+        margin-left:50px;
 
         .graph{
-            margin-right:40px;
+            margin-right:80px;
         }
     
         .stats{
             font-size:30px;
+            margin-right:60px;
         }
     }
 
@@ -462,8 +464,15 @@
     .historyRowMain{
         grid-template-columns:1.3fr 0.5fr 1fr 1fr;
     }
+
+    .historyRowMain, .historyExtra1, .historyExtra2{
+        border-top-width:0;
+        border-right-width:0;
+        border-left-width:0;
+    }
     
     .historyUnits{
-        font-size:25px;
+        font-size:28px;
+        margin-left:3px;
     }
 }

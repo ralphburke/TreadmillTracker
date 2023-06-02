@@ -46,6 +46,7 @@ function addLegRow(){
     rowNum==1?legRowCopy.id="legRow1":legRowCopy.removeAttribute("id");
     if(legRowCopy.id==="legRow1"){legRowCopy.querySelector(".legRowDelete").style.visibility="hidden"};
     document.getElementById("legForm").insertBefore(legRowCopy, document.getElementById("addLegButton"));
+    // 'change' event triggers when the selected <option> changes. I learned this form here: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
     document.getElementsByClassName("typeInput")[rowNum-1].addEventListener("change", event=>{
         legGrey(event.target);
     })
@@ -91,13 +92,7 @@ function addSession(){
     //undefined set as a backup value if no tiredness elements are checked
     let tiredness=undefined;
     document.getElementsByName("tiredness").forEach(element=>{if(element.checked==true){tiredness=element.value}});
-
-    let category=document.getElementById("sessionCategory").value;
-    if(category=="Sprints"){image="url('Webapp Sprint.13fa4a76.png')"}else{
-    if(category=="Jog"){image="url('Webapp Jog.251f5d69.png')"}else{
-    if(category=="Endurance"){image="url('Webapp Endurance.e2670ce3.png')"}else{
-    if(category=="Walk"){image="url('Webapp Walk.2db0cc85.png')"}}}}
-
+    
     let session={
         name: document.getElementById("nameInput").value,
         category,
@@ -108,7 +103,6 @@ function addSession(){
         // toLocaleString formats the date nicely. I got the method from here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
         date: new Date().toLocaleString("en-AU"),
         id: Date.now(),
-        image,
         totalSpeed:0,
         totalTime:0
     }
@@ -261,6 +255,7 @@ function pastSessionConstruct(session){
     pastSessionCopy.querySelector(".timeStatM").innerText=Math.floor(session.totalTime/60);
     // I needed a number to be exactly 2 digits, this post gives a good method using toLocaleString: https://stackoverflow.com/a/8043061
     pastSessionCopy.querySelector(".timeStatS").innerText=(session.totalTime%60).toLocaleString("en-AU", {minimumIntegerDigits:2});
+    pastSessionCopy.setAttribute("data-image", session.category);
     if(session.calories!==""){pastSessionCopy.querySelector(".calorieStat").innerHTML=session.calories+"<span class=\"sessionUnits\"> kcal</span>"}else{
         pastSessionCopy.querySelector(".calorieStat").remove();
     };
@@ -273,9 +268,6 @@ function pastSessionConstruct(session){
         document.getElementById("deleteButton").setAttribute("data-sessionIndex", index);
         viewSession(pastSession, sessionList[index]);
     });
-
-    // I learned from this webpage that snake-case css properties are referenced in JS using camelCase https://www.w3schools.com/jsref/prop_style_backgroundimage.asp
-    pastSessionCopy.style.backgroundImage=session.image;
     document.getElementById("sessionsRow").appendChild(pastSessionCopy);
 }
 
@@ -342,7 +334,7 @@ function viewSession(pastSession, session){
     newHistoryRows(session);
 }
 
-/* Couldn't find a good css method for doing this so I did it here
+/* Couldn't find a good css way of doing this so I did it here
  (css scale seems only capable of scaling width and height by the same amount) */
 function enlargeGraph(graphLocation){
     graphLocation.querySelectorAll(".bar").forEach(bar=>{

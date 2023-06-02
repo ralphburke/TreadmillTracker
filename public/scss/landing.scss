@@ -57,6 +57,18 @@ h1{
         line-height:5px;
         width:376px;
         padding:0px;
+        &[data-image="Sprints"]{
+            background-image:url("../images/Webapp Sprint.png");
+        }
+        &[data-image="Jog"]{
+            background-image:url("../images/Webapp Jog.png");
+        }
+        &[data-image="Endurance"]{
+            background-image:url("../images/Webapp Endurance.png");
+        }
+        &[data-image="Walk"]{
+            background-image:url("../images/Webapp Walk.png");
+        }
         background-position:125px -1px;
         background-size:71%;
         background-repeat:no-repeat;
@@ -142,16 +154,15 @@ h1{
     padding:5px 10px 2px 2px;
 }
 
-// https://stackoverflow.com/a/47511171
 .textOutline{
     text-shadow:-1px 0px 0 white,
-    -0.707px -0.707px 0 white,
+    -1px -1px 0 white,
     0px -1px 0 white,
-    0.707px -0.707px 0 white,
+    1px -1px 0 white,
     1px 0px 0 white,
-    0.707px 0.707px 0 white,
+    1px 1px 0 white,
     0px 1px 0 white,
-    -0.707px 0.707px 0 white,
+    -1px 1px 0 white,
 }
 
 .bar{
@@ -212,8 +223,8 @@ h1{
     
         .pastSession{
             width:540px;
-            background-size:80%;
-            background-position:135px -1px;
+            background-size:81.5%;
+            background-position:127px -1px;
         }
         .sessionName{
             font-size:30px;
